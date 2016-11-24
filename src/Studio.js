@@ -48,16 +48,16 @@ class Studio extends Component {
     ], this.onUpdate)
     
     this.framePlayer = new FramePlayer([
-      {url: "/images/1.JPG"},
-      {url: "/images/2.JPG"},
-      {url: "/images/3.JPG"},
-      {url: "/images/4.JPG"},
-      {url: "/images/5.JPG"},
-      {url: "/images/6.JPG"},
-      {url: "/images/7.JPG"},
-      {url: "/images/8.JPG"},
-      {url: "/images/9.JPG"},
-      {url: "/images/10.JPG"}
+      {url: `${process.env.PUBLIC_URL}/images/1.JPG`},
+      {url: `${process.env.PUBLIC_URL}/images/2.JPG`},
+      {url: `${process.env.PUBLIC_URL}/images/3.JPG`},
+      {url: `${process.env.PUBLIC_URL}/images/4.JPG`},
+      {url: `${process.env.PUBLIC_URL}/images/5.JPG`},
+      {url: `${process.env.PUBLIC_URL}/images/6.JPG`},
+      {url: `${process.env.PUBLIC_URL}/images/7.JPG`},
+      {url: `${process.env.PUBLIC_URL}/images/8.JPG`},
+      {url: `${process.env.PUBLIC_URL}/images/9.JPG`},
+      {url: `${process.env.PUBLIC_URL}/images/10.JPG`}
     ], this.onUpdate)
     
     this.debugToaster = debugToaster
