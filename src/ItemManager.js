@@ -9,10 +9,9 @@ export default class ItemManager {
       this.nameMapping = {}
       this.onChange = onChange
 
-      items.forEach(function(ii, index) {
+      items.forEach((ii, index) => {
         this.nameMapping[ii.name] = {item: ii, index: index }
-      }.bind(this))
-
+      })
   }
 
   current () {
