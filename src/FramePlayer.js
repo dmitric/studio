@@ -1,4 +1,8 @@
-class FramePlayer {
+/**
+* Manages playback
+*/
+
+export default class FramePlayer {
   constructor (frames, onChange) {
     this.frames = frames || []
     this.currentFrameIndex = 0
@@ -133,5 +137,3 @@ class FramePlayer {
     return this.playing
   }
 }
-
-export default FramePlayer

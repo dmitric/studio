@@ -1,6 +1,3 @@
 import ItemManager from './ItemManager.js'
 
-class PaletteManager extends ItemManager {
-}
-
-export default PaletteManager
+export default class PaletteManager extends ItemManager {}

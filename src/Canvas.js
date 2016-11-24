@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import generateImageDataFromImage from './ImageUtils.js'
 
-class Canvas extends Component {
+export default class Canvas extends Component {
   
   constructor (props) {
     super(props);
@@ -72,5 +72,3 @@ class Canvas extends Component {
     )
   }
 }
-
-export default Canvas

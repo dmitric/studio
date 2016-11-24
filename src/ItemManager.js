@@ -1,14 +1,17 @@
-class ItemManager {
-	
+/**
+* Base class for managing a list of items with names
+*/
+
+export default class ItemManager {
 	constructor (items, onChange) {
 		this.items = items || []
-  	this.currentIndex = 0
-  	this.nameMapping = {}
-  	this.onChange = onChange
+	  	this.currentIndex = 0
+	  	this.nameMapping = {}
+	  	this.onChange = onChange
 
-  	items.forEach(function(ii, index) {
-  		this.nameMapping[ii.name] = {item: ii, index: index }
-  	}.bind(this))
+	  	items.forEach(function(ii, index) {
+	  		this.nameMapping[ii.name] = {item: ii, index: index }
+	  	}.bind(this))
 
 	}
 
@@ -54,5 +57,3 @@ class ItemManager {
 	}
 
 }
-
-export default ItemManager

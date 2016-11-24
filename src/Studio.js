@@ -24,7 +24,7 @@ const debugToaster = Toaster.create({
   position: Position.TOP_RIGHT,
 });
 
-class Studio extends Component {
+export default class Studio extends Component {
   
   constructor (props) {
     super(props)
@@ -201,5 +201,3 @@ class StudioTools extends Component {
     )
   }
 }
-
-export default Studio

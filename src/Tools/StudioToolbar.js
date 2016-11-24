@@ -5,7 +5,7 @@ import {
 } from "@blueprintjs/core";
 
 
-class StudioToolbar extends Component {
+export default class StudioToolbar extends Component {
   constructor (props) {
     super(props)
 
@@ -86,5 +86,3 @@ class StudioToolbar extends Component {
     )
   }
 }
-
-export default StudioToolbar

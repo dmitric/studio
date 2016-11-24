@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Menu, MenuItem, MenuDivider } from "@blueprintjs/core";
 
-class StudioMenu extends Component {
+export default class StudioMenu extends Component {
   
   handleShaderClick (e) {
     this.props.shaderManager.selectByName(e.target.textContent)
@@ -73,5 +73,3 @@ class StudioMenu extends Component {
     )
   }
 }
-
-export default StudioMenu
