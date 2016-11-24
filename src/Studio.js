@@ -33,6 +33,7 @@ class Studio extends Component {
     this.updateDimensions = this.updateDimensions.bind(this)
     this.toggleDebug = this.toggleDebug.bind(this)
     this.toggleFullScreen = this.toggleFullScreen.bind(this)
+    this.handleKeydown = this.handleKeydown.bind(this)
     
     this.shaderManager = new ShaderManager([
       new PixelShader(),
@@ -73,17 +74,32 @@ class Studio extends Component {
     }
   }
 
+  handleKeydown (ev) {
+    if ((ev.metaKey || ev.ctrlKey) && ev.which === 72) {
+      ev.preventDefault()
+      this.setState({debug: !this.state.debug})
+    } else if ((ev.metaKey || ev.ctrlKey) && ev.which === 70) {
+      ev.preventDefault()
+      this.toggleFullScreen()
+    } else if (ev.which === 32) {
+      ev.preventDefault()
+      this.framePlayer.toggle()
+    }
+  }
+
   componentWillMount () {
     this.updateDimensions(this.state.fullScreen)
     FocusStyleManager.onlyShowFocusOnTabs()
   }
 
   componentDidMount () {
-    window.addEventListener("resize", this.updateDimensions)
+    window.addEventListener('keydown', this.handleKeydown, true)
+    window.addEventListener("resize", this.updateDimensions, true)
   }
 
   componentWillUnmount () {
-    window.removeEventListener("resize", this.updateDimensions)
+    window.removeEventListener("resize", this.updateDimensions, true)
+    window.removeEventListener('keydown', this.handleKeydown, true)
   }
 
   onUpdate () {
