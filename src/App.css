@@ -1,0 +1,61 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.Studio {
+  background-color: rgba(0, 0, 0, 0.9);
+  height: 100vh;
+}
+
+::selection {
+  background: rgba(125, 188, 255, 0.6);
+}
+
+.pt-card, .pt-toast {
+  box-shadow: none !important;
+}
+
+.StudioToolbar {
+  position: absolute;
+  bottom: 10%;
+  max-width: 500px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  user-select: none
+}
+
+.pt-toast {
+  user-select: none;
+}
+
+canvas {
+  cursor: default;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0;
+  bottom: 0; right: 0;
+}
+
+.StudioMenu {
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  user-select: none
+}
