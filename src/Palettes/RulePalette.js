@@ -7,26 +7,26 @@ import Palette from './Palette.js'
 */
 export default class RulePalette extends Palette {
 
-	constructor (name, rules) {
-		super(name)
-		this.rules = rules || []
-	}
+  constructor (name, rules) {
+    super(name)
+    this.rules = rules || []
+  }
 
-	getColorFromPixel (pixel) {
-		let color = pixel.color
-		
-		this.rules.some((rule) => {
-			let result = rule.test(pixel)
-			
-			if (result) {
-				color = rule.color
-			}
+  getColorFromPixel (pixel) {
+    let color = pixel.color
+    
+    this.rules.some((rule) => {
+      let result = rule.test(pixel)
+      
+      if (result) {
+        color = rule.color
+      }
 
-			return result
-		})
+      return result
+    })
 
-		return color
-	}
+    return color
+  }
 }
 
 /**

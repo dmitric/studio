@@ -4,10 +4,10 @@ import Shader from './Shader.js'
 * Basic PixelShader
 */
 export default class PixelShader extends Shader {
-	
-	constructor (name) {
-		super(name || "Pixel")
-	}
+  
+  constructor (name) {
+    super(name || "Pixel")
+  }
 
   renderPixel(ctx, pixel, data, palette) {
     ctx.beginPath();
@@ -26,5 +26,5 @@ export default class PixelShader extends Shader {
 
     ctx.fill()
     ctx.stroke()
-	}
+  }
 }

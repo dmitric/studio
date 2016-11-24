@@ -4,10 +4,10 @@ import Shader from './Shader.js'
 * Basic PixelShader
 */
 export default class CircleShader extends Shader {
-	
-	constructor (name) {
-		super(name || "Circles")
-	}
+  
+  constructor (name) {
+    super(name || "Circles")
+  }
 
   renderPixel(ctx, pixel, data, palette) {
     ctx.beginPath();
@@ -21,5 +21,5 @@ export default class CircleShader extends Shader {
 
     ctx.fill()
     ctx.stroke()
-	}
+  }
 }

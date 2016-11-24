@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 
 import {
   Button, Slider
-} from "@blueprintjs/core";
-
+} from "@blueprintjs/core"
 
 export default class StudioToolbar extends Component {
   constructor (props) {
