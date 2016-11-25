@@ -21,8 +21,8 @@ export default class PixelShader extends Shader {
     
     ctx.closePath();
 
-    ctx.fillStyle = palette.getColorFromPixel(pixel);
-    ctx.strokeStyle = palette.getBorderColorFromPixel(pixel);
+    ctx.fillStyle = palette.getColorFromPixel(pixel)
+    ctx.strokeStyle = palette.getBorderColorFromPixel(pixel)
 
     ctx.fill()
     ctx.stroke()

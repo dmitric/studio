@@ -4,12 +4,6 @@ import FramePlayer from './FramePlayer.js'
 import ShaderManager from './ShaderManager.js'
 import PaletteManager from './PaletteManager.js'
 
-import PixelShader from './Shaders/PixelShader.js'
-import CircleShader from './Shaders/CircleShader.js'
-
-import Palette from './Palettes/Palette.js'
-import { stepColorPalette } from './Palettes/RulePalette.js'
-
 import React, { Component } from 'react'
 
 import StudioMenu from './Tools/StudioMenu.js'
@@ -35,17 +29,13 @@ export default class Studio extends Component {
     this.toggleFullScreen = this.toggleFullScreen.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
     
-    this.shaderManager = new ShaderManager([
-      new PixelShader(),
-      new CircleShader(),
-    ], this.onUpdate)
+    this.shaderManager = new ShaderManager(
+                                ShaderManager.defaultItems(),
+                                this.onUpdate)
 
-    this.paletteManager = new PaletteManager([
-      new Palette('Normal'),
-      stepColorPalette("Red Pink",
-        ["#111", "red", "#BF384F", "#FF69B4", "white"],
-        [0.1, 0.15, 0.25, 0.4, 100])
-    ], this.onUpdate)
+    this.paletteManager = new PaletteManager(
+                                PaletteManager.defaultItems(),
+                                this.onUpdate)
     
     this.framePlayer = new FramePlayer([
       {url: `${process.env.PUBLIC_URL}/images/1.JPG`},
