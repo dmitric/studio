@@ -29,14 +29,13 @@ export default class Canvas extends Component {
     this.clearCanvas(ctx)
 
     if (image) {
-
       const data = generateImageDataFromImage(image, {
         resolution: this.props.resolution,
         maxWidth: this.props.width,
         maxHeight: this.props.height,
         verticalSkip: this.props.shader.verticalSkip || 1,
         horizontalSkip: this.props.shader.horizontalSkip || 1,
-        contrast: 70,
+        contrast: this.props.contrast,
         useContrast: true
       })
 
