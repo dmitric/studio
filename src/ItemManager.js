@@ -5,13 +5,13 @@
 export default class ItemManager {
   constructor (items, onChange) {
     this.items = items || []
-      this.currentIndex = 0
-      this.nameMapping = {}
-      this.onChange = onChange
+    this.currentIndex = 0
+    this.nameMapping = {}
+    this.onChange = onChange
 
-      items.forEach((ii, index) => {
-        this.nameMapping[ii.name] = {item: ii, index: index }
-      })
+    items.forEach((ii, index) => {
+      this.nameMapping[ii.name] = {item: ii, index: index }
+    })
   }
 
   current () {

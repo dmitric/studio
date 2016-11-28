@@ -31,7 +31,7 @@ export default class Canvas extends Component {
     if (image) {
 
       const data = generateImageDataFromImage(image, {
-        resolution: 20,
+        resolution: this.props.resolution,
         maxWidth: this.props.width,
         maxHeight: this.props.height,
         verticalSkip: this.props.shader.verticalSkip || 1,

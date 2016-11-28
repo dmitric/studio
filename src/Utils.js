@@ -11,7 +11,7 @@ export function shuffle (array) {
     var index = Math.floor(Math.random() * counter)
 
     // Decrease counter by 1
-    counter--;
+    counter--
 
     // And swap the last element with it
     var temp = array[counter]

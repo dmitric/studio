@@ -20,7 +20,7 @@ export default class Shader {
   render (ctx, data, palette) {
     this.prepare(ctx, data, palette)
     
-    data.pixels.forEach((pixel) => {
+    data.pixels.forEach(pixel => {
       this.renderPixel(ctx, pixel, data, palette)
     })
 
@@ -28,7 +28,7 @@ export default class Shader {
   }
 
   finish (ctx, data, palette) {
-    
+
   }
 
   renderPixel (ctx, pixel, data, palette) {

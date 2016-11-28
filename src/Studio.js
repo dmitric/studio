@@ -3,6 +3,8 @@ import Canvas from './Canvas.js'
 import FramePlayer from './FramePlayer.js'
 import ShaderManager from './ShaderManager.js'
 import PaletteManager from './PaletteManager.js'
+import ResolutionManager from './ResolutionManager.js'
+import ContrastManager from './ContrastManager.js'
 
 import React, { Component } from 'react'
 
@@ -36,6 +38,14 @@ export default class Studio extends Component {
     this.paletteManager = new PaletteManager(
                                 PaletteManager.defaultItems(),
                                 this.onUpdate)
+
+    this.resolutionManager = new ResolutionManager(
+                                    30, 2, 60, 2,
+                                    this.onUpdate)
+
+    this.contrastManager = new ContrastManager(
+                                    70, 2, 100, 2,
+                                    this.onUpdate)
     
     this.framePlayer = new FramePlayer([
       {url: `${process.env.PUBLIC_URL}/images/1.JPG`},
@@ -60,7 +70,9 @@ export default class Studio extends Component {
       frameCount: this.framePlayer.frames.length,
       currentShaderIndex: this.shaderManager.currentIndex,
       currentPaletteIndex: this.paletteManager.currentIndex,
-      fullScreen: false
+      fullScreen: false,
+      resolution: this.resolutionManager.current(),
+      contrast: this.contrastManager.current()
     }
   }
 
@@ -88,6 +100,20 @@ export default class Studio extends Component {
       } else {
         this.shaderManager.moveToPreviousIndex()
       }
+    } else if (ev.which === 38) {
+      ev.preventDefault()
+      if (ev.metaKey || ev.ctrlKey) {
+        this.contrastManager.up()
+      } else {
+        this.resolutionManager.up()
+      }
+    } else if (ev.which === 40) {
+      ev.preventDefault()
+      if (ev.metaKey || ev.ctrlKey) {
+        this.contrastManager.down()
+      } else {
+        this.resolutionManager.down()
+      }
     }
   }
 
@@ -113,7 +139,9 @@ export default class Studio extends Component {
       frameCount: this.framePlayer.frames.length,
       frames: this.framePlayer.frames,
       currentShaderIndex: this.shaderManager.currentIndex,
-      currentPaletteIndex: this.paletteManager.currentIndex
+      currentPaletteIndex: this.paletteManager.currentIndex,
+      resolution: this.resolutionManager.current(),
+      contrast: this.contrastManager.current()
     })
   }
 
@@ -161,9 +189,13 @@ export default class Studio extends Component {
     if (this.state.debug) {
       this.debugToaster.show({
         message: result ? 'Fullscreen On' : 'Fullscreen Off',
-        iconName: result ? 'fullscreen' : 'minimize' })
+        iconName: result ? 'fullscreen' : 'minimize'
+      })
 
-      this.debugToaster.show({ message: `Canvas is ${dims.width}px x ${dims.height}px`, iconName: 'move' })
+      this.debugToaster.show({
+        message: `Canvas is ${dims.width}px x ${dims.height}px`,
+        iconName: 'move'
+      })
     }
 
   }
@@ -179,7 +211,9 @@ export default class Studio extends Component {
           shader={this.shaderManager.current()}
           palette={this.paletteManager.current()}
           debugToaster={this.debugToaster}
-          framePlayer={this.framePlayer} />
+          framePlayer={this.framePlayer}
+          resolution={this.resolutionManager.current()}
+          contrast={this.contrastManager.current()} />
         
         <StudioTools
           debug={this.state.debug}
@@ -189,7 +223,9 @@ export default class Studio extends Component {
           framePlayer={this.framePlayer}
           paletteManager={this.paletteManager}
           shaderManager={this.shaderManager}
-          debugToaster={this.debugToaster} />
+          debugToaster={this.debugToaster}
+          resolutionManager={this.resolutionManager}
+          contrastManager={this.contrastManager} />
       </div>
     )
   }
