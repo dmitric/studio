@@ -1,4 +1,5 @@
 import Shader from './Shader.js'
+import tinycolor from 'tinycolor2'
 
 /**
 * Basic PixelShader
@@ -10,10 +11,11 @@ export default class GhostSquareShader extends Shader {
   }
 
   renderPixel(ctx, pixel, data, palette) {
+
+    const col = tinycolor(palette.getColorFromPixel(pixel))
+    col.setAlpha(Math.min(pixel.brightness, 0.85))
       
     const deg = Math.floor((Math.random() * 30) + 1)
-
-    const g = (pixel.r + pixel.b + pixel.g)/3;
       
     const topX = data.blockDimension * (pixel.x - 1/2)
     const topY = data.blockDimension * (pixel.y - 1)
@@ -41,11 +43,11 @@ export default class GhostSquareShader extends Shader {
     ctx.closePath()
     ctx.restore()
 
-    ctx.fillStyle = `rgba(${g}, ${g}, ${g}, ${Math.min(pixel.brightness, 0.85)})`
+    ctx.fillStyle = col.toRgbString()
     ctx.fill()
 
     if (false) {
-      ctx.strokeStyle = `rgba(${g}, ${g}, ${g}, ${Math.min(pixel.brightness, 0.85)})`
+      ctx.strokeStyle = col.toRgbString()
       ctx.stroke()
     }
   }
