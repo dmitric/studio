@@ -9,7 +9,7 @@ export default class Canvas extends Component {
     this.drawCanvasFromImage = this.drawCanvasFromImage.bind(this)
     this.clearCanvas = this.clearCanvas.bind(this)
     this.loadFrame = this.loadFrame.bind(this)
-    this.defaultColor = props.defaultColor || 'black'
+    this.defaultColor = props.defaultColor || '#111'
   }
 
   loadFrame () {
@@ -38,6 +38,10 @@ export default class Canvas extends Component {
         horizontalSkip: this.props.shader.horizontalSkip || 1,
         contrast: 70,
         useContrast: true
+      })
+
+      this.props.shader.configure({
+        defaultColor: this.defaultColor
       })
 
       this.props.shader.render(ctx, data, this.props.palette)

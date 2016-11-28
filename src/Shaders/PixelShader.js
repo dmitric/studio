@@ -9,7 +9,7 @@ export default class PixelShader extends Shader {
     super(name || "Pixel")
   }
 
-  renderPixel(ctx, pixel, data, palette) {
+  renderPixel (ctx, pixel, data, palette) {
     ctx.beginPath();
       
     ctx.rect(
@@ -19,12 +19,9 @@ export default class PixelShader extends Shader {
       data.blockDimension
     )
     
-    ctx.closePath();
+    ctx.closePath()
 
-    ctx.fillStyle = palette.getColorFromPixel(pixel)
-    ctx.strokeStyle = palette.getBorderColorFromPixel(pixel)
+    this.fillPixelWithPalette(ctx, pixel, palette)
 
-    ctx.fill()
-    ctx.stroke()
   }
 }

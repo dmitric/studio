@@ -59,7 +59,8 @@ function generateImageDataFromImage(image, options) {
     pixels: [],
     rowCount: canvasHeight/options.verticalSkip,
     columnCount: canvasWidth/options.horizontalSkip,
-    blockDimension: blockDimension
+    blockDimension: blockDimension,
+    pixelGrid: create2DArray(canvasHeight/options.verticalSkip)
   }
 
   let actualX = 0, actualY = 0
@@ -71,9 +72,9 @@ function generateImageDataFromImage(image, options) {
     for (let x = 0; x < canvasWidth; x += options.horizontalSkip) {
       // get each pixel's brightness and output corresponding character
 
-      let offset = (y * canvasWidth + x) * 4;
+      let offset = (y * canvasWidth + x) * 4
 
-      let color = getColorAtOffset(imageData.data, offset);
+      let color = getColorAtOffset(imageData.data, offset)
 
       // increase the contrast of the image so that the ASCII representation looks better
       // http://www.dfstudios.co.uk/articles/image-processing-algorithms-part-5/
@@ -83,13 +84,13 @@ function generateImageDataFromImage(image, options) {
       // http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
       let brightness = calculatePixelBrightness(contrastedColor)
 
-      let character = characters[(characters.length - 1) - Math.round(brightness * (characters.length - 1))];
+      let character = characters[(characters.length - 1) - Math.round(brightness * (characters.length - 1))]
 
-      let useColor = options.useContrast ? contrastedColor : color;
+      let useColor = options.useContrast ? contrastedColor : color
 
-      let greyscale = (useColor.red + useColor.green + useColor.blue)/3;
+      let greyscale = (useColor.red + useColor.green + useColor.blue)/3
 
-      results.pixels.push({
+      let pixel = {
         character: character,
         color: `rgb(${useColor.red}, ${useColor.green}, ${useColor.blue})`,
         brightness: brightness,
@@ -101,11 +102,16 @@ function generateImageDataFromImage(image, options) {
         r: useColor.red,
         g: useColor.green,
         b: useColor.blue
-      });
+      }
 
-      actualX++;
+      results.pixelGrid[pixel.x][pixel.y] = pixel
+      results.pixels.push(pixel)
+
+      actualX++
+
     }
-    actualY++;
+
+    actualY++
   }
 
   return results
@@ -140,6 +146,16 @@ function getColorAtOffset(data, offset) {
     blue: data[offset + 2],
     alpha: data[offset + 3]
   }
+}
+
+function create2DArray(rows) {
+  var arr = []
+
+  for (var i=0; i<rows; i++) {
+    arr[i] = []
+  }
+
+  return arr
 }
 
 function downScaleCanvas(cv, scale) {

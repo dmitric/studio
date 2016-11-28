@@ -6,11 +6,11 @@ export default class Palette {
     this.name = name || "Palette"
   }
 
-  getColorFromPixel (frame) {
-    return frame.color
+  getColorFromPixel (pixel) {
+    return pixel.color
   }
   
-  getBorderColorFromPixel(frame) {
-    return this.getColorFromPixel(frame)
+  getBorderColorFromPixel(pixel) {
+    return this.getColorFromPixel(pixel)
   }
 }

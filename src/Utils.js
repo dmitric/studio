@@ -1,8 +1,8 @@
-export function bound(value, interval) {
+export function bound (value, interval) {
 	return Math.max(interval[0], Math.min(interval[1], value))
 }
 
-export function shuffle(array) {
+export function shuffle (array) {
   var counter = array.length
 
   // While there are elements in the array
@@ -20,4 +20,8 @@ export function shuffle(array) {
   }
 
   return array
+}
+
+export function randomIntFromInterval (min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
 }

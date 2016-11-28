@@ -9,7 +9,7 @@ export default class PipeShader extends Shader {
     super(name || "Pipes")
   }
 
-  renderPixel(ctx, pixel, data, palette) {
+  renderPixel (ctx, pixel, data, palette) {
 
     ctx.beginPath()
 
@@ -23,7 +23,7 @@ export default class PipeShader extends Shader {
       )
 
     } else {
-      
+
       ctx.rect(
         pixel.x * data.blockDimension,
         (pixel.y + 1/3) * data.blockDimension,
@@ -42,11 +42,7 @@ export default class PipeShader extends Shader {
 
     ctx.closePath()
 
-    ctx.fillStyle = palette.getColorFromPixel(pixel)
-    ctx.strokeStyle = palette.getBorderColorFromPixel(pixel)
-
-    ctx.fill()
-    ctx.stroke()
+    this.fillPixelWithPalette(ctx, pixel, palette)
 
   }
 }

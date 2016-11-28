@@ -4,6 +4,7 @@ import CircleShader from './Shaders/CircleShader.js'
 import GhostSquareShader from './Shaders/GhostSquareShader.js'
 import PipeShader from './Shaders/PipeShader.js'
 import PixelShader from './Shaders/PixelShader.js'
+import DiscShader from './Shaders/DiscShader.js'
 
 /**
 * ShaderManager
@@ -14,7 +15,8 @@ export default class ShaderManager extends ItemManager {
       new PixelShader(),
       new CircleShader(),
       new GhostSquareShader(),
-      new PipeShader()
+      new PipeShader(),
+      new DiscShader()
     ]
   }
 }
