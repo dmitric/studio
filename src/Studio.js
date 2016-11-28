@@ -74,6 +74,20 @@ export default class Studio extends Component {
     } else if (ev.which === 32) {
       ev.preventDefault()
       this.framePlayer.toggle()
+    } else if (ev.which === 39) {
+      ev.preventDefault()
+      if (ev.metaKey || ev.ctrlKey) {
+        this.paletteManager.moveToNextIndex()
+      } else {
+        this.shaderManager.moveToNextIndex()
+      }
+    } else if (ev.which === 37) {
+      ev.preventDefault()
+      if (ev.metaKey || ev.ctrlKey) {
+        this.paletteManager.moveToPreviousIndex()
+      } else {
+        this.shaderManager.moveToPreviousIndex()
+      }
     }
   }
 

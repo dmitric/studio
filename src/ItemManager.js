@@ -28,6 +28,44 @@ export default class ItemManager {
     }
   }
 
+  nextIndex () {
+    if (this.items.length) {
+      return (this.currentIndex + 1 > this.items.length - 1 ) ? 0 : this.currentIndex + 1
+    } else {
+      return null
+    }
+  }
+
+  moveToNextIndex () {
+    const nextInd = this.nextIndex()
+    
+    if (nextInd !== null) {
+      this.currentIndex = nextInd
+      if (this.onChange){
+        this.onChange()
+      }
+    }
+  }
+
+  moveToPreviousIndex () {
+    const previousInd = this.previousIndex()
+    
+    if (previousInd !== null) {
+      this.currentIndex = previousInd
+      if (this.onChange){
+        this.onChange()
+      }
+    }
+  }
+
+  previousIndex () {
+    if (this.items.length) {
+      return (this.currentIndex - 1 < 0) ? this.items.length - 1 : this.currentIndex - 1
+    } else {
+      return null
+    }
+  }
+
   getByName(name) {
     return this.nameMapping[name]
   }
