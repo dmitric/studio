@@ -32,25 +32,27 @@ export default class SketchingShader extends Shader {
     const height = data.columnCount * data.blockDimension
 
     // generate particles
-    data.pixels.forEach(pixel => {
-      let addParticle
-      const xmin = pixel.x * data.blockDimension
-      const xmax = xmin + data.blockDimension
+    data.pixelGrid.forEach(pixelRow => {
+      pixelRow.forEach(pixel => {
+        let addParticle
+        const xmin = pixel.x * data.blockDimension
+        const xmax = xmin + data.blockDimension
 
-      const ymin = pixel.y * data.blockDimension
-      const ymax = ymin + data.blockDimension
+        const ymin = pixel.y * data.blockDimension
+        const ymax = ymin + data.blockDimension
 
-      if (resolution < 7) {
-        addParticle = true;
-      } else if (resolution <= 30) {
-        addParticle = Math.random() <= 0.60;
-      } else {
-        addParticle = Math.random() <= 0.40;
-      }
+        if (resolution < 7) {
+          addParticle = true;
+        } else if (resolution <= 30) {
+          addParticle = Math.random() <= 0.60;
+        } else {
+          addParticle = Math.random() <= 0.40;
+        }
 
-      if (addParticle) {
-        particles.push({ 0: randomIntFromInterval(xmin, xmax), 1: randomIntFromInterval(ymin, ymax) })
-      }
+        if (addParticle) {
+          particles.push({ 0: randomIntFromInterval(xmin, xmax), 1: randomIntFromInterval(ymin, ymax) })
+        }
+      })
     })
 
     if (!canFill){

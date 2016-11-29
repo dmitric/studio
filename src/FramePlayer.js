@@ -88,7 +88,10 @@ export default class FramePlayer {
   }
 
   removeFrame (ii) {
-    this.frames.slice(ii, 1)
+    this.frames.splice(ii, 1)
+    
+    this.currentFrameIndex = Math.min(this.frames.length-1, this.currentFrameIndex)
+
     if (this.onChange){
       this.onChange()
     }

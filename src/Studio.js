@@ -40,7 +40,7 @@ export default class Studio extends Component {
                                 this.onUpdate)
 
     this.resolutionManager = new ResolutionManager(
-                                    30, 2, 45, 2,
+                                    28, 4, 44, 2,
                                     this.onUpdate)
 
     this.contrastManager = new ContrastManager(

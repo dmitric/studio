@@ -56,7 +56,6 @@ function generateImageDataFromImage(image, options) {
   const imageData = scaledCanvasCtx.getImageData(0, 0, canvasWidth, canvasHeight);
 
   const results = {
-    pixels: [],
     rowCount: canvasHeight/options.verticalSkip,
     columnCount: canvasWidth/options.horizontalSkip,
     blockDimension: blockDimension,
@@ -105,7 +104,6 @@ function generateImageDataFromImage(image, options) {
       }
 
       results.pixelGrid[pixel.x][pixel.y] = pixel
-      results.pixels.push(pixel)
 
       actualX++
 
