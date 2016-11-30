@@ -2,8 +2,9 @@
 * Base Palette
 */
 export default class Palette {
-  constructor (name) {
+  constructor (name, backgroundColor) {
     this.name = name || "Palette"
+    this.backgroundColor = backgroundColor
   }
 
   getColorFromPixel (pixel) {

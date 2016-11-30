@@ -7,6 +7,8 @@ export default class Shader {
   constructor (name) {
     this.name = name
     this.options = {}
+    this.horizontalSkip = 1
+    this.verticalSkip = 1
   }
 
   configure (options) {
@@ -14,7 +16,14 @@ export default class Shader {
   }
 
   prepare (ctx, data, palette) {
-
+    ctx.lineWidth = 1
+    
+    if (palette.backgroundColor) {
+      ctx.fillStyle = palette.backgroundColor
+      ctx.fillRect(0, 0,
+        data.blockDimension * data.columnCount * this.horizontalSkip,
+        data.blockDimension * data.rowCount * this.verticalSkip)
+    }
   }
 
   render (ctx, data, palette) {

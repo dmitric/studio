@@ -19,7 +19,9 @@ export default class Canvas extends Component {
       this.drawCanvasFromImage(img)
     }
 
-    img.src = this.props.currentFrame.url
+    if (this.props.currentFrame) {
+      img.src = this.props.currentFrame.url
+    }
   }
 
   drawCanvasFromImage (image) {

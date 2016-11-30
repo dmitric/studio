@@ -7,8 +7,8 @@ import Palette from './Palette.js'
 */
 export default class RulePalette extends Palette {
 
-  constructor (name, rules) {
-    super(name)
+  constructor (name, rules, backgroundColor) {
+    super(name, backgroundColor)
     this.rules = rules || []
   }
 
@@ -33,7 +33,7 @@ export default class RulePalette extends Palette {
 * helper function to generate rule palettes based on a property,
 * by default brightness
 */
-export function stepColorPalette(paletteName, colors, intervals, property) {
+export function stepColorPalette(paletteName, colors, intervals, backgroundColor, property) {
   let steps = []
   
   property = property || "brightness"
@@ -52,5 +52,5 @@ export function stepColorPalette(paletteName, colors, intervals, property) {
       })
     })(i)
   }
-  return new RulePalette(paletteName, steps)
+  return new RulePalette(paletteName, steps, backgroundColor)
 }

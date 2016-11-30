@@ -70,6 +70,25 @@ canvas {
   height: 100%;
 }
 
+.frame-preview {
+  height: 70px;
+  width: 70px;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 6px;
+}
+
+.frame-preview img {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  /* Maintain aspect ratio */
+  max-height: 100%;
+  max-width: 100%;
+}
+
 .StudioMenu {
   position: absolute;
   left: 15px;

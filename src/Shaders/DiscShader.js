@@ -23,6 +23,6 @@ export default class DiscShader extends CircleShader {
 
     ctx.closePath()
 
-    this.fillPixelWithColor(ctx, this.options.defaultColor, palette.getColorFromPixel(pixel))
+    this.fillPixelWithColor(ctx, palette.backgroundColor || this.options.defaultColor, palette.getColorFromPixel(pixel))
   }
 }

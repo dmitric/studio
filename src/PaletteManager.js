@@ -31,7 +31,7 @@ export default class PaletteManager extends ItemManager {
         [0.1, 0.15, 0.25, 0.4, 0.5, 0.6, 0.7, 100]),
       stepColorPalette("Icon Like",
         ["#3e0e04", "#c5522b", "#0691da", "#fab715", "transparent"],
-        [0.08, 0.20, 0.25, 0.4, 100]),
+        [0.08, 0.20, 0.25, 0.4, 100], "#fde3d5"),
       stepColorPalette("RBW",
         ["transparent", "red", "white", "transparent"],
         [0.08, 0.25, 0.65, 100]),

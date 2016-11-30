@@ -59,7 +59,7 @@ function generateImageDataFromImage(image, options) {
     rowCount: canvasHeight/options.verticalSkip,
     columnCount: canvasWidth/options.horizontalSkip,
     blockDimension: blockDimension,
-    pixelGrid: create2DArray(canvasHeight/options.verticalSkip)
+    pixelGrid: create2DArray(canvasWidth/options.horizontalSkip)
   }
 
   let actualX = 0, actualY = 0
@@ -105,11 +105,11 @@ function generateImageDataFromImage(image, options) {
 
       results.pixelGrid[pixel.x][pixel.y] = pixel
 
-      actualX++
+      actualX ++
 
     }
 
-    actualY++
+    actualY ++
   }
 
   return results
@@ -147,9 +147,9 @@ function getColorAtOffset(data, offset) {
 }
 
 function create2DArray(rows) {
-  var arr = []
+  const arr = []
 
-  for (var i=0; i<rows; i++) {
+  for (let i = 0; i < rows; i++) {
     arr[i] = []
   }
 

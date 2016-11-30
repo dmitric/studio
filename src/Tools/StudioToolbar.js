@@ -87,7 +87,7 @@ export default class StudioToolbar extends Component {
 
     reader.onloadend = (e) => { 
       this.props.framePlayer.addFrame({url: e.target.result})
-      
+
       if (this.props.debug) {
         this.props.debugToaster.show({ message: `Added frame`, iconName: 'add'})
       }
@@ -114,7 +114,9 @@ export default class StudioToolbar extends Component {
 
                   return (
                     <td className={classNames} key={ii} style={styles} onClick={() => this.onFrameChange(ii+1) } >
-                      <img alt={ii} src={frame.url} />
+                      <div className='frame-preview'>
+                        <img alt={ii} src={frame.url} />
+                      </div>
                       <Button iconName='delete' text='Remove' className='pt-minimal' onClick={() => this.onFrameDelete(ii) } />
                     </td>
                   )
