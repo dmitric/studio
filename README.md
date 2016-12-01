@@ -36,7 +36,7 @@ The system can change contrast on the original image, which can drastically alte
 
 ### Frames
 
-You can add and remove frames to the studio system via a simple interface in the browse.
+You can add and remove frames to the studio system via a simple interface in the browser.
 
 ## How to install and run
 
