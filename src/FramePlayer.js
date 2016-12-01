@@ -6,7 +6,7 @@ export default class FramePlayer {
   constructor (frames, onChange) {
     this.frames = frames || []
     this.currentFrameIndex = 0
-    this.period = 100
+    this.period = 180
     this.playing = false
     this.onChange = onChange
     this.timeoutId = null
