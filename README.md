@@ -20,7 +20,7 @@ I have provided a base [Shader](Shaders/Shader.js) class that makes things a bit
 
 Palettes provide a simple way of applying a color scheme to your canvas. Instead of using the original color from your image, you can programmatically determine how you want a pixel colored with a palette.
 
-I have provided a simple Palette interface [Palette](Palette/Palette.js) and a simple [RulePalette](Palette/RulePalette.js) which let you test a set of rules to determine what color should be used. I've also created a simple helper function `stepColorPalette` to help you generate color ramp like `RulePalette`s with ease.
+I have provided a simple Palette interface [Palette](Palette/Palette.js) and a simple [RulePalette](Palette/RulePalette.js) which lets you test a set of rules to determine what color should be used. I've also created a simple helper function `stepColorPalette` to help you generate color ramp like `RulePalette`s with ease.
 
 ## Tools
 
@@ -37,6 +37,10 @@ The system can change contrast on the original image, which can drastically alte
 ### Frames
 
 You can add and remove frames to the studio system via a simple interface in the browser.
+
+### Player
+
+You can easily play, pause, and navigate through the frames in studio.
 
 ## How to install and run
 
