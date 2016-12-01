@@ -150,6 +150,8 @@ export default class StudioToolbar extends Component {
       </div>
     )
 
+    const hasFrames = this.props.framePlayer.frames.length >= 1
+
     return (
       <div className='StudioToolbar'>
         <div className='pt-card' style={{ marginBottom: '10px'}}>
@@ -171,7 +173,7 @@ export default class StudioToolbar extends Component {
           </div>
 
           <div className="slider">
-            <Slider value={ this.props.framePlayer.frames.length >= 1 ? this.props.framePlayer.currentFrameIndex + 1 : 1}
+            <Slider value={ hasFrames ? this.props.framePlayer.currentFrameIndex + 1 : 1}
               min={1} max={ Math.max(this.props.framePlayer.frames.length, 2)}
               initialValue={1} disabled={this.props.framePlayer.frames.length <= 1}
               renderLabel={false} onChange={this.onFrameChange} onRelease={this.onFrameRelease} />
@@ -182,7 +184,8 @@ export default class StudioToolbar extends Component {
           </div>
         </div>
 
-        {`${this.props.framePlayer.currentFrameIndex+1} / ${this.props.framePlayer.frames.length}`}
+        { hasFrames ?
+            `${this.props.framePlayer.currentFrameIndex+1} / ${this.props.framePlayer.frames.length}` :  'No frames' }
       </div>
     )
   }
