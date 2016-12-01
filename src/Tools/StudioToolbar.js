@@ -92,7 +92,7 @@ export default class StudioToolbar extends Component {
         this.props.debugToaster.show({ message: `Added frame`, iconName: 'add'})
       }
     }
-    
+
     reader.readAsDataURL(file)
   }
 
@@ -122,7 +122,7 @@ export default class StudioToolbar extends Component {
                         })
     } else {
       framesContent = (
-        <td className='pt-callout' style={{width: '429px', height: '125px', textAlign: 'center'}}>
+        <td className='pt-callout' style={{width: '427px', height: '125px', textAlign: 'center'}}>
           Click the + button to add a frame
         </td>
       )
@@ -130,7 +130,7 @@ export default class StudioToolbar extends Component {
 
     const popoverContent = (
       <div className='group' style={{ width: '500px'}} >
-        <div style={{ float: 'left', width: '429px', overflowX: 'auto', height: '100%' }}>
+        <div style={{ float: 'left', width: '427px', overflowX: 'auto', height: '100%' }}>
           <table>
             <tbody>
               <tr>
