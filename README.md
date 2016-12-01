@@ -37,3 +37,31 @@ The system can change contrast on the original image, which can drastically alte
 ### Frames
 
 You can add and remove frames to the studio system via a simple interface in the browse.
+
+## How to install and run
+
+The app is written in Javascript and relies on React. It's easy to get it going because everything is in the [package.json](package.json) file.
+
+### Installation
+
+```
+npm install
+```
+
+### Run the app locally
+
+```
+npm run start
+```
+
+### Build for static use
+
+```
+npm run build
+```
+
+### Deploy to GitHub Pages
+
+```
+npm run deploy
+```
