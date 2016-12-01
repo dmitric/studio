@@ -94,9 +94,40 @@ export default class StudioToolbar extends Component {
     }
 
     reader.readAsDataURL(file)
+
   }
 
   render () {
+
+    let framesContent
+
+    if (this.props.framePlayer.frames.length) {
+       framesContent = this.props.framePlayer.frames.map((frame, ii) => {
+                          let styles = { width: '70px', textAlign: 'center'}
+                          let classNames = 'pt-callout'
+                          
+                          if (this.props.framePlayer.currentFrameIndex === ii) {
+                            styles.backgroundColor = 'rgba(195, 228, 22, 0.25)'
+                          }
+
+                          return (
+                            <td className={classNames} key={ii} style={styles} onClick={() => this.onFrameChange(ii+1) } >
+                              <div className='frame-preview'>
+                                <img alt={ii} src={frame.url} />
+                              </div>
+                              <Button iconName='delete'
+                                text='Remove' className='pt-minimal'
+                                onClick={() => this.onFrameDelete(ii) } />
+                            </td>
+                          )
+                        })
+    } else {
+      framesContent = (
+        <td className='pt-callout' style={{width: '429px', height: '125px', textAlign: 'center'}}>
+          Click the + button to add a frame
+        </td>
+      )
+    }
 
     const popoverContent = (
       <div className='group' style={{ width: '500px'}} >
@@ -104,23 +135,7 @@ export default class StudioToolbar extends Component {
           <table>
             <tbody>
               <tr>
-                {this.props.framePlayer.frames.map((frame, ii) => {
-                  let styles = { width: '70px', textAlign: 'center'}
-                  let classNames = 'pt-callout'
-                  
-                  if (this.props.framePlayer.currentFrameIndex === ii) {
-                    styles.backgroundColor = 'rgba(195, 228, 22, 0.25)'
-                  }
-
-                  return (
-                    <td className={classNames} key={ii} style={styles} onClick={() => this.onFrameChange(ii+1) } >
-                      <div className='frame-preview'>
-                        <img alt={ii} src={frame.url} />
-                      </div>
-                      <Button iconName='delete' text='Remove' className='pt-minimal' onClick={() => this.onFrameDelete(ii) } />
-                    </td>
-                  )
-                })}
+                {framesContent}
               </tr>
             </tbody>
           </table>
@@ -156,10 +171,12 @@ export default class StudioToolbar extends Component {
           </div>
 
           <div className="slider">
-            <Slider value={this.props.framePlayer.currentFrameIndex+1} min={1} max={this.props.framePlayer.frames.length}
-              initialValue={1} renderLabel={false} onChange={this.onFrameChange} onRelease={this.onFrameRelease} />
+            <Slider value={ this.props.framePlayer.frames.length >= 1 ? this.props.framePlayer.currentFrameIndex + 1 : 1}
+              min={1} max={ Math.max(this.props.framePlayer.frames.length, 2)}
+              initialValue={1} disabled={this.props.framePlayer.frames.length <= 1}
+              renderLabel={false} onChange={this.onFrameChange} onRelease={this.onFrameRelease} />
           </div>
-
+          
           <div className='right-button' style={{ position: "absolute", right: 10, top: 25, bottom: 0}}>
             <Button iconName={this.props.fullScreen ? 'minimize' : 'fullscreen'} onClick={this.props.toggleFullScreen} />
           </div>

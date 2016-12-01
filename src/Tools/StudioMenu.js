@@ -73,8 +73,14 @@ export default class StudioMenu extends Component {
           <MenuDivider title='Palette' />
           {palettesHtml}
           <MenuDivider title='Playback' />
-          <MenuItem iconName='layout-grid' text='Resolution' />
-          <MenuItem iconName='contrast' text='Contrast' />
+          <MenuItem iconName='layout-grid' text='Resolution'>
+            <MenuItem text='Increase' label='Up' onClick={e => this.props.resolutionManager.up() } />
+            <MenuItem text='Decrease' label='Down' onClick={e => this.props.resolutionManager.down() }/>
+          </MenuItem>
+          <MenuItem iconName='contrast' text='Contrast'>
+            <MenuItem text='Increase' label='⌘Up' onClick={e => this.props.contrastManager.up() } />
+            <MenuItem text='Decrease' label='⌘Down' onClick={e => this.props.contrastManager.down() } />
+          </MenuItem>
           <MenuDivider title='Debug' />
           {fullScreenMenu}
           <MenuItem iconName='control' text='Toggle controls'

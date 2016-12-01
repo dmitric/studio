@@ -93,5 +93,6 @@ canvas {
   position: absolute;
   left: 15px;
   top: 20px;
-  user-select: none
+  user-select: none;
+  min-width: 210px;
 }

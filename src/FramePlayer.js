@@ -57,12 +57,22 @@ export default class FramePlayer {
     }
   }
 
+  moveToLastFrame() {
+    const lastFrameId = this.frames.length - 1
+    if (lastFrameId >= 0) {
+      this.currentFrameIndex = lastFrameId
+      if (this.onChange) {
+        this.onChange()
+      }
+    }
+  }
+
   moveToNextFrame () {
     const nextFrameInd = this.nextFrameIndex()
     
     if (nextFrameInd !== null) {
       this.currentFrameIndex = nextFrameInd
-      if (this.onChange){
+      if (this.onChange) {
         this.onChange()
       }
     }
@@ -90,7 +100,7 @@ export default class FramePlayer {
   removeFrame (ii) {
     this.frames.splice(ii, 1)
     
-    this.currentFrameIndex = Math.min(this.frames.length-1, this.currentFrameIndex)
+    this.currentFrameIndex = Math.max(0, Math.min(this.frames.length-1, this.currentFrameIndex))
 
     if (this.onChange){
       this.onChange()
