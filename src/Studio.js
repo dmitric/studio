@@ -79,7 +79,7 @@ export default class Studio extends Component {
   handleKeydown (ev) {
     if ((ev.metaKey || ev.ctrlKey) && ev.which === 72) {
       ev.preventDefault()
-      this.setState({debug: !this.state.debug})
+      this.toggleDebug()
     } else if ((ev.metaKey || ev.ctrlKey) && ev.which === 70) {
       ev.preventDefault()
       this.toggleFullScreen()
