@@ -9,18 +9,28 @@ export default class CircleShader extends Shader {
     super(name || "Circles")
   }
 
-  renderPixel (ctx, pixel, data, palette) {
+  renderCircleWithRadius(ctx, pixel, data, palette, radius) {
     ctx.beginPath()
 
     ctx.arc(
       (pixel.x + 0.5) * data.blockDimension,
       (pixel.y + 0.5) * data.blockDimension,
-      0.90 * (data.blockDimension/2),
+      radius,
       0, 2 * Math.PI, false
     )
 
     ctx.closePath()
 
     this.fillPixelWithPalette(ctx, pixel, palette)
+  }
+
+  renderPixel (ctx, pixel, data, palette) {
+    this.renderCircleWithRadius(
+      ctx,
+      pixel,
+      data,
+      palette,
+      0.90 * (data.blockDimension/2)
+    )
   }
 }

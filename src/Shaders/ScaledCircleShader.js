@@ -1,26 +1,21 @@
-import Shader from './Shader.js'
+import CircleShader from './CircleShader.js'
 
 /**
 * Basic CircleShader
 */
-export default class ScaledCircleShader extends Shader {
+export default class ScaledCircleShader extends CircleShader {
   
   constructor (name) {
     super(name || "Scaled Circles")
   }
 
   renderPixel (ctx, pixel, data, palette) {
-    ctx.beginPath()
-
-    ctx.arc(
-      (pixel.x + 0.5) * data.blockDimension,
-      (pixel.y + 0.5) * data.blockDimension,
-      0.90 * (data.blockDimension/2) * Math.min(pixel.brightness + 0.1, 1),
-      0, 2 * Math.PI, false
+    this.renderCircleWithRadius(
+      ctx,
+      pixel,
+      data,
+      palette,
+      0.90 * (data.blockDimension/2) * Math.min(pixel.brightness + 0.1, 1)
     )
-
-    ctx.closePath()
-
-    this.fillPixelWithPalette(ctx, pixel, palette)
   }
 }
