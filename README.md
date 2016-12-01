@@ -1,6 +1,6 @@
 # Studio
 
-A toolset and environment for generating 2D digital art and animations in the browser.
+A toolset and environment for generating 2D digital art and animations in the browser. See it working here: [studio](http://blog.zmitri.com/studio)
 
 ![A screenshot of the environment](screenshot.png)
 
