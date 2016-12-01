@@ -16,7 +16,8 @@ export default class Canvas extends Component {
     const img = new Image()
     
     img.onload = () => {
-      this.drawCanvasFromImage(img)
+      const timing = this.drawCanvasFromImage(img)
+      this.props.onRender(timing)
     }
 
     if (this.props.currentFrame) {
@@ -31,6 +32,8 @@ export default class Canvas extends Component {
     this.clearCanvas(ctx)
 
     if (image) {
+
+      const startProcess = new Date().getTime()
       const data = generateImageDataFromImage(image, {
         resolution: this.props.resolution,
         maxWidth: this.props.width,
@@ -40,16 +43,26 @@ export default class Canvas extends Component {
         contrast: this.props.contrast,
         useContrast: true
       })
+      const endProcess = new Date().getTime()
 
       this.props.shader.configure({
         defaultColor: this.defaultColor
       })
 
+      const startRender = new Date().getTime()
       this.props.shader.render(ctx, data, this.props.palette)
+      const endRender = new Date().getTime()
+
+      return {
+        renderTime: endRender-startRender,
+        processTime: endProcess-startProcess
+      }
     
     } else {
       ctx.fillStyle = this.defaultColor
       ctx.fillRect(0, 0, this.props.width, this.props.height)
+
+      return { renderTime: 0, processTime: 0}
     }
   }
 

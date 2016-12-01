@@ -1,7 +1,7 @@
 import ItemManager from './ItemManager.js'
-import Palette from './Palettes/Palette.js'
-import { stepColorPalette } from './Palettes/RulePalette.js'
-import GreyscalePalette from './Palettes/GreyscalePalette.js'
+import Palette from '../Palettes/Palette.js'
+import { stepColorPalette } from '../Palettes/RulePalette.js'
+import GreyscalePalette from '../Palettes/GreyscalePalette.js'
 
 /**
 * PaletteManager

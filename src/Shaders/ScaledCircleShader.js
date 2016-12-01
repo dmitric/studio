@@ -1,7 +1,7 @@
 import CircleShader from './CircleShader.js'
 
 /**
-* Basic CircleShader
+* ScaledCircleShader
 */
 export default class ScaledCircleShader extends CircleShader {
   

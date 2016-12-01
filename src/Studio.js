@@ -1,9 +1,11 @@
 import Canvas from './Canvas.js'
-import ContrastManager from './ContrastManager.js'
+
 import FramePlayer from './FramePlayer.js'
-import PaletteManager from './PaletteManager.js'
-import ResolutionManager from './ResolutionManager.js'
-import ShaderManager from './ShaderManager.js'
+
+import ContrastManager from './Managers/ContrastManager.js'
+import PaletteManager from './Managers/PaletteManager.js'
+import ResolutionManager from './Managers/ResolutionManager.js'
+import ShaderManager from './Managers/ShaderManager.js'
 
 import React, { Component } from 'react'
 
@@ -32,6 +34,8 @@ export default class Studio extends Component {
     this.toggleDebug = this.toggleDebug.bind(this)
     this.toggleFullScreen = this.toggleFullScreen.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
+
+    this.onRender = this.onRender.bind(this)
     
     this.shaderManager = new ShaderManager(
                                 ShaderManager.defaultItems(),
@@ -75,47 +79,6 @@ export default class Studio extends Component {
       fullScreen: false,
       resolution: this.resolutionManager.current(),
       contrast: this.contrastManager.current()
-    }
-  }
-
-  handleKeydown (ev) {
-    if ((ev.metaKey || ev.ctrlKey) && ev.which === 72) {
-      ev.preventDefault()
-      this.toggleDebug()
-    } else if ((ev.metaKey || ev.ctrlKey) && ev.which === 70) {
-      ev.preventDefault()
-      this.toggleFullScreen()
-    } else if (ev.which === 32) {
-      ev.preventDefault()
-      this.framePlayer.toggle()
-    } else if (ev.which === 39) {
-      ev.preventDefault()
-      if (ev.metaKey || ev.ctrlKey) {
-        this.paletteManager.moveToNextIndex()
-      } else {
-        this.shaderManager.moveToNextIndex()
-      }
-    } else if (ev.which === 37) {
-      ev.preventDefault()
-      if (ev.metaKey || ev.ctrlKey) {
-        this.paletteManager.moveToPreviousIndex()
-      } else {
-        this.shaderManager.moveToPreviousIndex()
-      }
-    } else if (ev.which === 38) {
-      ev.preventDefault()
-      if (ev.metaKey || ev.ctrlKey) {
-        this.contrastManager.up()
-      } else {
-        this.resolutionManager.up()
-      }
-    } else if (ev.which === 40) {
-      ev.preventDefault()
-      if (ev.metaKey || ev.ctrlKey) {
-        this.contrastManager.down()
-      } else {
-        this.resolutionManager.down()
-      }
     }
   }
 
@@ -201,6 +164,54 @@ export default class Studio extends Component {
     }
   }
 
+  onRender (timing) {
+    if (this.state.debug) {
+      console.log(`Time to process: ${timing.processTime}ms`)
+      console.log(`Time to render: ${timing.renderTime}ms`)
+    }
+  }
+
+  handleKeydown (ev) {
+    if ((ev.metaKey || ev.ctrlKey) && ev.which === 72) {
+      ev.preventDefault()
+      this.toggleDebug()
+    } else if ((ev.metaKey || ev.ctrlKey) && ev.which === 70) {
+      ev.preventDefault()
+      this.toggleFullScreen()
+    } else if (ev.which === 32) {
+      ev.preventDefault()
+      this.framePlayer.toggle()
+    } else if (ev.which === 39) {
+      ev.preventDefault()
+      if (ev.metaKey || ev.ctrlKey) {
+        this.paletteManager.moveToNextIndex()
+      } else {
+        this.shaderManager.moveToNextIndex()
+      }
+    } else if (ev.which === 37) {
+      ev.preventDefault()
+      if (ev.metaKey || ev.ctrlKey) {
+        this.paletteManager.moveToPreviousIndex()
+      } else {
+        this.shaderManager.moveToPreviousIndex()
+      }
+    } else if (ev.which === 38) {
+      ev.preventDefault()
+      if (ev.metaKey || ev.ctrlKey) {
+        this.contrastManager.up()
+      } else {
+        this.resolutionManager.up()
+      }
+    } else if (ev.which === 40) {
+      ev.preventDefault()
+      if (ev.metaKey || ev.ctrlKey) {
+        this.contrastManager.down()
+      } else {
+        this.resolutionManager.down()
+      }
+    }
+  }
+
   render () {
     return (
       <div className='Studio'>
@@ -213,6 +224,7 @@ export default class Studio extends Component {
           palette={this.paletteManager.current()}
           debugToaster={this.debugToaster}
           framePlayer={this.framePlayer}
+          onRender={this.onRender}
           resolution={this.resolutionManager.current()}
           contrast={this.contrastManager.current()} />
         

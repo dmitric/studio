@@ -1,4 +1,4 @@
-import { bound } from './Utils.js'
+import { bound } from '../Utils.js'
 
 export default class RangeManager {
   

@@ -1,8 +1,12 @@
 /**
 * Base class for shaders.
 * Any class that extends the shader should
-* implement it's own renderPixel method
+* implement it's own render or renderPixel method,
+* and has the ability to implement it's own prepare
+* or finish methods to perform actions before
+* and after rendering pixels
 */
+
 export default class Shader {
   constructor (name) {
     this.name = name
@@ -29,12 +33,12 @@ export default class Shader {
   render (ctx, data, palette) {
     this.prepare(ctx, data, palette)
     
-    data.pixelGrid.forEach(pixelRow => {
-      pixelRow.forEach(pixel => {
-        this.renderPixel(ctx, pixel, data, palette)
-      })
-    })
-
+    for (let ri=0; ri < data.rowCount; ri ++) {
+      for (let ci=0; ci < data.columnCount; ci ++) {
+        this.renderPixel(ctx, data.pixelGrid[ci][ri], data, palette)
+      }
+    }
+    
     this.finish(ctx, data, palette)
   }
 
