@@ -46,6 +46,5 @@ export default class GhostSquareShader extends Shader {
     ctx.restore()
 
     this.fillPixelWithColor(ctx, rgbCol, rgbCol)
-
   }
 }

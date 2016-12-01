@@ -14,7 +14,6 @@ export default class PipeShader extends Shader {
     ctx.beginPath()
 
     if (pixel.brightness < 0.15 && pixel.brightness > 0.08) {
-
       ctx.rect(
         pixel.x * data.blockDimension,
         (pixel.y + 1/3) * data.blockDimension,
@@ -23,7 +22,6 @@ export default class PipeShader extends Shader {
       )
 
     } else {
-
       ctx.rect(
         pixel.x * data.blockDimension,
         (pixel.y + 1/3) * data.blockDimension,
@@ -43,6 +41,5 @@ export default class PipeShader extends Shader {
     ctx.closePath()
 
     this.fillPixelWithPalette(ctx, pixel, palette)
-
   }
 }

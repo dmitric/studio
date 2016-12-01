@@ -22,6 +22,5 @@ export default class PixelShader extends Shader {
     ctx.closePath()
 
     this.fillPixelWithPalette(ctx, pixel, palette)
-
   }
 }

@@ -92,9 +92,8 @@ export default class StudioToolbar extends Component {
         this.props.debugToaster.show({ message: `Added frame`, iconName: 'add'})
       }
     }
-
+    
     reader.readAsDataURL(file)
-
   }
 
   render () {

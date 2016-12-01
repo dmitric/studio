@@ -1,10 +1,9 @@
-
 import Canvas from './Canvas.js'
+import ContrastManager from './ContrastManager.js'
 import FramePlayer from './FramePlayer.js'
-import ShaderManager from './ShaderManager.js'
 import PaletteManager from './PaletteManager.js'
 import ResolutionManager from './ResolutionManager.js'
-import ContrastManager from './ContrastManager.js'
+import ShaderManager from './ShaderManager.js'
 
 import React, { Component } from 'react'
 
@@ -20,6 +19,9 @@ const debugToaster = Toaster.create({
   position: Position.TOP_RIGHT,
 });
 
+/**
+* Welcome to the Studio
+*/
 export default class Studio extends Component {
   
   constructor (props) {
@@ -197,7 +199,6 @@ export default class Studio extends Component {
         iconName: 'move'
       })
     }
-
   }
 
   render () {

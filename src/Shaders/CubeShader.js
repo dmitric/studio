@@ -68,7 +68,6 @@ export default class CubeShader extends Shader {
         //    /|
         //    |/
       }
-
     }
 
     ctx.closePath()

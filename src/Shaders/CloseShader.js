@@ -85,6 +85,5 @@ export default class CloseShader extends Shader {
 
       ctx.stroke()
     }
-
   }
 }

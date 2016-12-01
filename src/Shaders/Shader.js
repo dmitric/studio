@@ -39,7 +39,7 @@ export default class Shader {
   }
 
   finish (ctx, data, palette) {
-
+    // no op
   }
 
   renderPixel (ctx, pixel, data, palette) {
@@ -61,5 +61,4 @@ export default class Shader {
     ctx.fill()
     ctx.stroke()
   }
-
 }

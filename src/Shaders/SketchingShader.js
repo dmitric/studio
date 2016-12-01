@@ -114,5 +114,4 @@ export default class SketchingShader extends Shader {
 
     this.fillPixelWithColor(ctx, "#EBF4EF", "#EBF4EF")
   }
-
 }

@@ -3,10 +3,10 @@ import Shader from './Shader.js'
 /**
 * Basic CircleShader
 */
-export default class CircleShader extends Shader {
+export default class ScaledCircleShader extends Shader {
   
   constructor (name) {
-    super(name || "Circles")
+    super(name || "Scaled Circles")
   }
 
   renderPixel (ctx, pixel, data, palette) {
@@ -15,7 +15,7 @@ export default class CircleShader extends Shader {
     ctx.arc(
       (pixel.x + 0.5) * data.blockDimension,
       (pixel.y + 0.5) * data.blockDimension,
-      0.90 * (data.blockDimension/2),
+      0.90 * (data.blockDimension/2) * pixel.brightness,
       0, 2 * Math.PI, false
     )
 
