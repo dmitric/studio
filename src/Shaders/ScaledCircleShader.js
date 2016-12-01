@@ -15,7 +15,7 @@ export default class ScaledCircleShader extends Shader {
     ctx.arc(
       (pixel.x + 0.5) * data.blockDimension,
       (pixel.y + 0.5) * data.blockDimension,
-      0.90 * (data.blockDimension/2) * pixel.brightness,
+      0.90 * (data.blockDimension/2) * Math.min(pixel.brightness + 0.1, 1),
       0, 2 * Math.PI, false
     )
 
