@@ -74,12 +74,44 @@ export default class StudioMenu extends Component {
           {palettesHtml}
           <MenuDivider title='Playback' />
           <MenuItem iconName='layout-grid' text='Resolution'>
-            <MenuItem text='Increase' label='Up' onClick={e => this.props.resolutionManager.up() } />
-            <MenuItem text='Decrease' label='Down' onClick={e => this.props.resolutionManager.down() }/>
+            <MenuItem text='Increase' label='Up' onClick={e => {
+                this.props.resolutionManager.up()
+                if (this.props.debug) {
+                  this.props.debugToaster.show({
+                    message: `Resolution increased to ${this.props.resolutionManager.current() }`, iconName: 'arrow-up'
+                  })
+                }
+              }
+            } />
+            <MenuItem text='Decrease' label='Down' onClick={e => {
+                this.props.resolutionManager.down()
+                if (this.props.debug) {
+                  this.props.debugToaster.show({
+                    message: `Resolution decreased to ${this.props.resolutionManager.current() }`, iconName: 'arrow-down'
+                  })
+                }
+              }
+            } />
           </MenuItem>
           <MenuItem iconName='contrast' text='Contrast'>
-            <MenuItem text='Increase' label='⌘Up' onClick={e => this.props.contrastManager.up() } />
-            <MenuItem text='Decrease' label='⌘Down' onClick={e => this.props.contrastManager.down() } />
+            <MenuItem text='Increase' label='⌘Up' onClick={e => {
+                this.props.contrastManager.up()
+                if (this.props.debug) {
+                  this.props.debugToaster.show({
+                    message: `Contrast increased to ${this.props.contrastManager.current() }`, iconName: 'arrow-up'
+                  })
+                }
+              }
+            }/>
+            <MenuItem text='Decrease' label='⌘Down' onClick={e => {
+                this.props.contrastManager.down()
+                if (this.props.debug) {
+                  this.props.debugToaster.show({
+                    message: `Contrast decreased to ${this.props.contrastManager.current() }`, iconName: 'arrow-down'
+                  })
+                }
+              }
+            } />
           </MenuItem>
           <MenuDivider title='Debug' />
           {fullScreenMenu}

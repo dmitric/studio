@@ -140,6 +140,10 @@ export default class Studio extends Component {
   }
 
   toggleDebug () {
+    if (this.state.debug) {
+      this.debugToaster.show({ message: "Press ⌘H to toggle menus on", iconName: 'help'})
+    }
+
     this.setState({debug: !this.state.debug})
   }
 
