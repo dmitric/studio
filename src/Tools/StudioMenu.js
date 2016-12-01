@@ -59,15 +59,26 @@ export default class StudioMenu extends Component {
       palettesHtml = <MenuItem text="No palettes" />
     }
 
+    const fullScreenMenu = this.props.fullScreen ?  ( <MenuItem iconName='minimize' text='Exit Full Screen'
+            onClick={this.props.toggleFullScreen} label='⌘F' /> ) :  (
+                <MenuItem iconName='fullscreen' text='Full Screen'
+                  onClick={this.props.toggleFullScreen} label='⌘F' />
+              )
+
     return (
       <div className='StudioMenu'>
         <Menu>
           <MenuDivider title='Shader' />
           {shadersHtml}
-          <MenuDivider title="Palette" />
+          <MenuDivider title='Palette' />
           {palettesHtml}
-          <MenuDivider />
-          <MenuItem text="Settings" iconName="cog" />
+          <MenuDivider title='Playback' />
+          <MenuItem iconName='layout-grid' text='Resolution' />
+          <MenuItem iconName='contrast' text='Contrast' />
+          <MenuDivider title='Debug' />
+          {fullScreenMenu}
+          <MenuItem iconName='control' text='Toggle controls'
+            onClick={this.props.toggleDebug} label='⌘H' />
         </Menu>
       </div>
     )
