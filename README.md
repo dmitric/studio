@@ -65,6 +65,7 @@ npm run build
 ```
 
 ### Deploy to GitHub Pages
+You first need set the `homepage` key to `http://{your-username}.github.io/studio` in your [package.json](package.json). Then run the build command to generate a version for GitHub pages. After it's built, you can deploy by running:
 
 ```
 npm run deploy
