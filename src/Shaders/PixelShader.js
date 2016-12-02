@@ -10,7 +10,7 @@ export default class PixelShader extends Shader {
   }
 
   renderPixel (ctx, pixel, data, palette) {
-    ctx.beginPath();
+    ctx.beginPath()
       
     ctx.rect(
       pixel.x*data.blockDimension,
