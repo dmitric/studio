@@ -14,13 +14,13 @@ In order to transform images into "art", you'll need some mechanism of turning b
 
 In order to add a shader to the studio system, all you need is an object with the properties: `name`, and `render` -- a function that fits the following interface: `render(ctx, data, palette)`.
 
-I have provided a base [Shader](Shaders/Shader.js) class that makes things a bit easier. For simple geometric shaders, where each pixel is independent of the others, all you'll need to do extend [Shader](Shaders/Shader.js) and override the function `renderPixel (ctx, pixel, data, palette)`. The simplest example of this is the [PixelShader](Shaders/PixelShader.js) which simply renders a square.
+I have provided a base [Shader](src/Shaders/Shader.js) class that makes things a bit easier. For simple geometric shaders, where each pixel is independent of the others, all you'll need to do extend [Shader](src/Shaders/Shader.js) and override the function `renderPixel (ctx, pixel, data, palette)`. The simplest example of this is the [PixelShader](src/Shaders/PixelShader.js) which simply renders a square.
 
 ## Palettes
 
 Palettes provide a simple way of applying a color scheme to your canvas. Instead of using the original color from your image, you can programmatically determine how you want a pixel colored with a palette.
 
-I have provided a simple Palette interface [Palette](Palette/Palette.js) and a simple [RulePalette](Palette/RulePalette.js) which lets you test a set of rules to determine what color should be used. I've also created a simple helper function `stepColorPalette` to help you generate color ramp like `RulePalette`s with ease.
+I have provided a simple Palette interface [Palette](src/Palettes/Palette.js) and a simple [RulePalette](src/Palettes/RulePalette.js) which lets you test a set of rules to determine what color should be used. I've also created a simple helper function `stepColorPalette` to help you generate color ramp like `RulePalette`s with ease.
 
 ## Tools
 
