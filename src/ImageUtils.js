@@ -14,9 +14,6 @@ function generateImageDataFromImage(image, options) {
     useContrast: options.useContrast || true
   }
 
-  // various thing we'll  need
-  const characters = ["@", "#"]
-
   
   const contrastFactor = calculateContrastFactor(options.contrast)
   
@@ -83,14 +80,11 @@ function generateImageDataFromImage(image, options) {
       // http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
       let brightness = calculatePixelBrightness(contrastedColor)
 
-      let character = characters[(characters.length - 1) - Math.round(brightness * (characters.length - 1))]
-
       let useColor = options.useContrast ? contrastedColor : color
 
       let greyscale = (useColor.red + useColor.green + useColor.blue)/3
 
       let pixel = {
-        character: character,
         color: `rgb(${useColor.red}, ${useColor.green}, ${useColor.blue})`,
         brightness: brightness,
         greyscale: `rgb(${greyscale},${greyscale}, ${greyscale})`,

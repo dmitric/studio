@@ -1,5 +1,6 @@
 import ItemManager from './ItemManager.js'
 
+import ASCIIShader from '../Shaders/ASCIIShader.js'
 import CircleShader from '../Shaders/CircleShader.js'
 import CloseShader from '../Shaders/CloseShader.js'
 import CubeShader from '../Shaders/CubeShader.js'
@@ -24,6 +25,7 @@ export default class ShaderManager extends ItemManager {
       new CircleShader(),
       new TriangleShader(),
       new CubeShader(),
+      new ASCIIShader(),
       new ScaledCircleShader(),
       new GhostSquareShader(),
       new CloseShader(),
