@@ -143,7 +143,7 @@ export default class StudioToolbar extends Component {
               className="pt-callout pt-intent-primary">
           <Button iconName='add' className='pt-large pt-intent-primary fill-height' onClick={this.onFrameAdd} />
           <form>
-            <input type="file" ref="file" multiple onChange={this.onFileSelect} style={{display: "none"}} />
+            <input type="file" ref="file" multiple accept='image/*' onChange={this.onFileSelect} style={{display: "none"}} />
           </form>
         </div>
       </div>
