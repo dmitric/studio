@@ -14,7 +14,7 @@ import SketchingShader from '../Shaders/SketchingShader.js'
 import StarsAndBarsShader from '../Shaders/StarsAndBarsShader.js'
 import TriangleShader from '../Shaders/TriangleShader.js'
 import RainbowShader from '../Shaders/RainbowShader.js'
-
+import GlitchShader from '../Shaders/GlitchShader.js'
 /**
 * ShaderManager
 */
@@ -28,6 +28,7 @@ export default class ShaderManager extends ItemManager {
       new ASCIIShader(),
       new ScaledCircleShader(),
       new GhostSquareShader(),
+      new GlitchShader(),
       new CloseShader(),
       new PipeShader(),
       new DiscShader(),
