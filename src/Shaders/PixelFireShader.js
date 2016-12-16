@@ -42,7 +42,7 @@ export default class PixelFireShader extends Shader {
     } else if (pixel.brightness < 0.3) {
       ctx.strokeStyle = "#f5f5f5"
     } else {
-      ctx.strokeStyle = color;
+      ctx.strokeStyle = color
     }
 
     ctx.fillStyle = color
@@ -58,9 +58,12 @@ export default class PixelFireShader extends Shader {
       pixel.marked = true
 
       ctx.beginPath()
-      ctx.rect(pixel.x*data.blockDimension,
-      pixel.y*data.blockDimension + data.blockDimension*0.5,
-        data.blockDimension, data.blockDimension*0.5);
+      ctx.rect(
+        pixel.x*data.blockDimension,
+        pixel.y*data.blockDimension + data.blockDimension*0.5,
+        data.blockDimension,
+        data.blockDimension*0.5
+      )
       ctx.closePath()
 
       ctx.fillStyle = "rgba(255, 0,0,0.75)"
