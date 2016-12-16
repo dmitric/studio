@@ -1,8 +1,5 @@
 import Shader from './Shader.js'
 
-/**
-* Basic PixelShader
-*/
 export default class PixelFireShader extends Shader {
   
   constructor (name) {
