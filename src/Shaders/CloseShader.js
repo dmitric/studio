@@ -16,8 +16,6 @@ export default class CloseShader extends Shader {
 
     var col = tinycolor(pixel.color)
     var convertedCol = tinycolor(palette.getColorFromPixel(pixel))
-
-    var canFill = true
     
     var blockWidth = data.blockDimension*2
     
@@ -66,7 +64,7 @@ export default class CloseShader extends Shader {
 
       ctx.fill()
 
-      if (!canFill){ 
+      if (!this.canFill){ 
         ctx.stroke()
       }
 

@@ -13,6 +13,7 @@ export default class Shader {
     this.options = {}
     this.horizontalSkip = 1
     this.verticalSkip = 1
+    this.canFill = true
   }
 
   configure (options) {

@@ -12,7 +12,6 @@ export default class GlitchShader extends Shader {
   }
 
   renderPixel (ctx, pixel, data, palette) {
-    const canFill = true
 
     ctx.save()
 
@@ -37,7 +36,7 @@ export default class GlitchShader extends Shader {
 
       ctx.fill()
       
-      if (canFill) {
+      if (this.canFill) {
         ctx.stroke()
       }
 
@@ -61,7 +60,7 @@ export default class GlitchShader extends Shader {
         ctx.strokeStyle = ctx.fillStyle
         ctx.fill()
 
-        if (!canFill){
+        if (!this.canFill){
           ctx.stroke()
         }
 
@@ -77,7 +76,7 @@ export default class GlitchShader extends Shader {
           
           ctx.fill()
           
-          if (!canFill){
+          if (!this.canFill){
             ctx.stroke()
           }
         }
@@ -95,7 +94,7 @@ export default class GlitchShader extends Shader {
           
           ctx.fill()
 
-          if (!canFill) {
+          if (!this.canFill) {
             ctx.stroke()
           }
         }

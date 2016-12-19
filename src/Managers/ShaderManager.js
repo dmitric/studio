@@ -14,6 +14,7 @@ import PixelFireShader from '../Shaders/PixelFireShader.js'
 import PixelShader from '../Shaders/PixelShader.js'
 import RainbowShader from '../Shaders/RainbowShader.js'
 import ScaledCircleShader from '../Shaders/ScaledCircleShader.js'
+import ScaledTriangleShader from '../Shaders/ScaledTriangleShader.js'
 import SketchingShader from '../Shaders/SketchingShader.js'
 import StarsAndBarsShader from '../Shaders/StarsAndBarsShader.js'
 import TargetShader from '../Shaders/TargetShader.js'
@@ -35,6 +36,7 @@ export default class ShaderManager extends ItemManager {
       new GlitchShader(),
       new CloseShader(),
       new PipeShader(),
+      new ScaledTriangleShader(),
       new DiscShader(),
       new SketchingShader(),
       new StarsAndBarsShader(),

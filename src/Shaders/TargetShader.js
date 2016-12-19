@@ -14,8 +14,6 @@ export default class TargetShader extends Shader {
 
   renderPixel (ctx, pixel, data, palette) {
 
-    const canFill = true
-
     var topX = pixel.x * data.blockDimension
     var topY = pixel.y * data.blockDimension
 
@@ -62,7 +60,7 @@ export default class TargetShader extends Shader {
     ctx.stroke()
 
     //if (mainFill === brightColor) {
-    //  if (canFill) {
+    //  if (this.canFill) {
     //    ctx.stroke()
     //  }
     //}
@@ -82,7 +80,7 @@ export default class TargetShader extends Shader {
 
       ctx.fill()
       
-      if (!canFill) {
+      if (!this.canFill) {
         ctx.strokeStyle = brightColor
         ctx.stroke()
       }
@@ -100,7 +98,7 @@ export default class TargetShader extends Shader {
 
       ctx.fill()
 
-      if (!canFill) {
+      if (!this.canFill) {
         ctx.strokeStyle = brightColor
         ctx.stroke()
       }
@@ -121,7 +119,7 @@ export default class TargetShader extends Shader {
 
         ctx.fill()
 
-        if (!canFill) {
+        if (!this.canFill) {
           ctx.strokeStyle = brightColor
           ctx.stroke()
         }
@@ -139,7 +137,7 @@ export default class TargetShader extends Shader {
 
         ctx.fill()
 
-        if (!canFill) {
+        if (!this.canFill) {
           ctx.strokeStyle = brightColor
           ctx.stroke()
         }
