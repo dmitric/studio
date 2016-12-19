@@ -11,24 +11,19 @@ export default class ScaledTriangleShader extends Shader {
   }
 
   renderPixel (ctx, pixel, data, palette) {
-    
-    const blockWidth = data.blockDimension*2
+    // we have twice as much space as the triangles are interlocking
+    const blockWidth = data.blockDimension * 2
 
-    var triangleWidth = blockWidth
+    // scale down height based on brightness
+    var triangleDimension = blockWidth * Math.max(Math.min(1-pixel.brightness, 0.75), 0)
 
-    var starter = triangleWidth/2
+    // we start the triangle every dimension / 2 because they interlace 
+    var starter = triangleDimension / 2
 
-    var triangleHeight = triangleWidth
+    var startingX = pixel.x * data.blockDimension
 
-    var startingX = (pixel.x)*starter
-    var startingY = pixel.y*triangleHeight
-
-    triangleHeight *= Math.min(1-pixel.brightness, 0.75)
-    triangleWidth = triangleHeight
-
-    starter = triangleWidth / 2
-
-    startingY += (blockWidth - starter*2)
+    // center it vertically
+    var startingY = pixel.y * blockWidth + (blockWidth - triangleDimension)/2
 
     const evenRow = pixel.y % 2 === 0
     const evenCol = pixel.x % 2 === 0
@@ -36,20 +31,34 @@ export default class ScaledTriangleShader extends Shader {
     ctx.beginPath()
 
     if ((evenRow && evenCol) || (!evenRow && !evenCol) ) {
+      
+      //  Point at the top
+      //
+      //       /\
+      //      /__\
+      //
+
       ctx.moveTo(startingX, startingY)
-      ctx.lineTo(startingX - starter, startingY+triangleHeight)
-      ctx.lineTo(startingX + starter, startingY+triangleHeight)
+      ctx.lineTo(startingX - starter, startingY + triangleDimension)
+      ctx.lineTo(startingX + starter, startingY + triangleDimension)
       ctx.lineTo(startingX, startingY)
     } else {
-      ctx.moveTo(startingX, startingY + triangleHeight)
-      ctx.lineTo(startingX-starter, startingY)
-      ctx.lineTo(startingX+starter, startingY)
-      ctx.lineTo(startingX, startingY + triangleHeight)
+      
+      //  Point at the bottom
+      //     ____
+      //     \  /
+      //      \/
+      //
+
+      ctx.moveTo(startingX, startingY + triangleDimension)
+      ctx.lineTo(startingX - starter, startingY)
+      ctx.lineTo(startingX + starter, startingY)
+      ctx.lineTo(startingX, startingY + triangleDimension)
     }
 
     ctx.closePath()
 
     this.fillPixelWithPalette(ctx, pixel, palette)
-
   }
+
 }
