@@ -21,7 +21,7 @@ export default class GlitchShader extends Shader {
       pixel.y * data.blockDimension
     )
 
-    const col = tinycolor(pixel.color)
+    const col = tinycolor(palette.getColorFromPixel(pixel))
 
     const saturatedCol = col.saturate(60)
 

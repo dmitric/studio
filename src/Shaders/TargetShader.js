@@ -1,5 +1,6 @@
 import Shader from './Shader.js'
 import tinycolor from 'tinycolor2'
+import { randomIntFromInterval } from '../Utils.js'
 
 export default class TargetShader extends Shader {
   
@@ -27,13 +28,25 @@ export default class TargetShader extends Shader {
     let mainFill, secondaryFill, brightColor, darkColor
     const palColor = palette.getColorFromPixel(pixel)
 
-    brightColor = tinycolor.mix(palColor, "#EBF4EF")
-    darkColor = tinycolor.mix(palColor, "#111")
 
     if (pixel.brightness >= 0.5) {
+      brightColor = palColor
+      darkColor = palette.getColorFromPixel({
+                    brightness: randomIntFromInterval(0, 10) / 100,
+                    color: tinycolor(palColor).darken(50).toString()
+                  })
+
       mainFill = brightColor
       secondaryFill = darkColor
     } else {
+
+      brightColor = palette.getColorFromPixel({
+                      brightness: randomIntFromInterval(90, 100) / 100,
+                      color: tinycolor(palColor).lighten(50).toString()
+                    })
+
+      darkColor = palColor
+
       mainFill = darkColor
       secondaryFill = brightColor
     }
