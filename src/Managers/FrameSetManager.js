@@ -13,7 +13,7 @@ export default class FrameSetManager extends ItemManager {
     fileType = fileType || 'jpg'
     
     const urls = Array.from(Array(frameCount), (_, i) => {
-      return { url : `${process.env.PUBLIC_URL}/images/${name}/${name}_${ i > 10 ? i+1 : `0${i+1}`}.${fileType}` }
+      return { url : `${process.env.PUBLIC_URL}/images/${name}/${name}_${ i + 1 < 10 ? `0${i+1}`: i+1 }.${fileType}` }
     })
 
     return {'name': name, urls: urls}
