@@ -1,6 +1,7 @@
 import Shader from './Shader.js'
 import { randomIntFromInterval } from '../Utils.js'
 import { voronoi } from 'd3'
+import tinycolor from 'tinycolor2'
 
 /**
 * Sketching shader
@@ -22,7 +23,27 @@ export default class SketchingShader extends Shader {
     ctx.lineTo(x1, y1);
   }
 
+  prepare (ctx, data, palette) {
+    ctx.lineWidth = 1
+    
+    if (palette.backgroundColor) {
+      ctx.fillStyle = palette.backgroundColor
+      ctx.fillRect(0, 0,
+        data.blockDimension * data.columnCount * this.horizontalSkip,
+        data.blockDimension * data.rowCount * this.verticalSkip)
+    } else {
+      ctx.fillStyle = palette.getColorFromPixel({color: '#111', brightness: 0.1})
+      
+      ctx.fillRect(0, 0,
+        data.blockDimension * data.columnCount * this.horizontalSkip,
+        data.blockDimension * data.rowCount * this.verticalSkip)
+    }
+  }
+
   render (ctx, data, palette) {
+
+    this.prepare(ctx, data, palette)
+
     const voro = voronoi()
     const particles = []
     const resolution = Math.min(data.rowCount, data.columnCount)
@@ -110,7 +131,25 @@ export default class SketchingShader extends Shader {
     })
 
     ctx.lineWidth = data.blockDimension / 12
+    
+    let fillColor
 
-    this.fillPixelWithColor(ctx, "#EBF4EF", "#EBF4EF")
+    if (palette.backgroundColor) {
+      let pcol = tinycolor(palette.backgroundColor)
+      
+      if (pcol.isLight()) {
+        fillColor = palette.getColorFromPixel({color: '#EBF4EF', brightness: 0.2})
+      } else {
+        fillColor = palette.getColorFromPixel({color: '#EBF4EF', brightness: 0.6})
+      }
+    } else {
+      fillColor = palette.getColorFromPixel({color: '#EBF4EF', brightness: 0.6})
+    }
+
+    if (fillColor === 'transparent') {
+      fillColor = '#EBF4EF'
+    }
+
+    this.fillPixelWithColor(ctx, fillColor, fillColor)
   }
 }

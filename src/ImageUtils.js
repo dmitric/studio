@@ -82,12 +82,12 @@ function generateImageDataFromImage(image, options) {
 
       let useColor = options.useContrast ? contrastedColor : color
 
-      let greyscale = (useColor.red + useColor.green + useColor.blue)/3
+      let greyscale = calculateGreyscale(useColor)
 
       let pixel = {
         color: `rgb(${useColor.red}, ${useColor.green}, ${useColor.blue})`,
         brightness: brightness,
-        greyscale: `rgb(${greyscale},${greyscale}, ${greyscale})`,
+        greyscale: greyscale,
         inverseBrightnessScale: `rgb(${Math.floor((1-brightness) * 255)}, ${Math.floor((1-brightness) * 255)}, ${Math.floor((1-brightness) * 255)})`,
         brightnessScale: `rgb(${Math.floor((brightness) * 255)}, ${Math.floor((brightness) * 255)}, ${Math.floor((brightness) * 255)})`,
         x: actualX,
@@ -116,6 +116,11 @@ function calculateContrastColor(color, contrastFactor) {
     blue: bound(Math.floor((color.blue - 128) * contrastFactor) + 128, [0, 255]),
     alpha: color.alpha
   }
+}
+
+function calculateGreyscale(color) {
+  const mono = parseInt((0.2125 * color.red) + (0.7154 * color.green) + (0.0721 * color.blue), 10)
+  return `rgb(${mono}, ${mono}, ${mono})`
 }
 
 function calculateContrastFactor(contrast) {
