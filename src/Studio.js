@@ -6,6 +6,7 @@ import ContrastManager from './Managers/ContrastManager.js'
 import PaletteManager from './Managers/PaletteManager.js'
 import ResolutionManager from './Managers/ResolutionManager.js'
 import ShaderManager from './Managers/ShaderManager.js'
+import FrameSetManager from './Managers/FrameSetManager.js'
 
 import React, { Component } from 'react'
 
@@ -52,19 +53,12 @@ export default class Studio extends Component {
     this.contrastManager = new ContrastManager(
                                     70, 2, 100, 2,
                                     this.onUpdate)
+
+    this.frameSetManager = new FrameSetManager(FrameSetManager.defaultItems())
     
-    this.framePlayer = new FramePlayer([
-      {url: `${process.env.PUBLIC_URL}/images/1.JPG`},
-      {url: `${process.env.PUBLIC_URL}/images/2.JPG`},
-      {url: `${process.env.PUBLIC_URL}/images/3.JPG`},
-      {url: `${process.env.PUBLIC_URL}/images/4.JPG`},
-      {url: `${process.env.PUBLIC_URL}/images/5.JPG`},
-      {url: `${process.env.PUBLIC_URL}/images/6.JPG`},
-      {url: `${process.env.PUBLIC_URL}/images/7.JPG`},
-      {url: `${process.env.PUBLIC_URL}/images/8.JPG`},
-      {url: `${process.env.PUBLIC_URL}/images/9.JPG`},
-      {url: `${process.env.PUBLIC_URL}/images/10.JPG`}
-    ], this.onUpdate)
+    this.framePlayer = new FramePlayer(
+                              this.frameSetManager.getByName("face").item.urls,
+                              this.onUpdate)
     
     this.debugToaster = debugToaster
 
