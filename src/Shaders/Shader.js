@@ -13,11 +13,14 @@ export default class Shader {
     this.options = {}
     this.horizontalSkip = 1
     this.verticalSkip = 1
-    this.canFill = true
   }
 
   configure (options) {
     this.options = options
+  }
+
+  shouldFill () {
+    return this.options.fill || this.options.fill === undefined
   }
 
   prepare (ctx, data, palette) {
@@ -47,6 +50,21 @@ export default class Shader {
     // no op
   }
 
+  fill (ctx) {
+    if (this.shouldFill()) {
+      ctx.fill()
+    }
+  }
+
+  stroke (ctx) {
+    if (!this.shouldFill()) {
+      ctx.lineWidth = Math.max(2, Math.floor(this.options.blockDimension/25))
+    } else {
+      ctx.lineWidth = 1
+    }
+    ctx.stroke()
+  }
+
   renderPixel (ctx, pixel, data, palette) {
     // no op
   }
@@ -63,7 +81,7 @@ export default class Shader {
     ctx.fillStyle = fillColor
     ctx.strokeStyle = borderColor
 
-    ctx.fill()
-    ctx.stroke()
+    this.fill(ctx)
+    this.stroke(ctx)
   }
 }

@@ -62,10 +62,10 @@ export default class CloseShader extends Shader {
 
       ctx.strokeStyle = ctx.fillStyle
 
-      ctx.fill()
+      this.fill(ctx)
 
-      if (!this.canFill){ 
-        ctx.stroke()
+      if (!this.shouldFill()){ 
+        this.stroke(ctx)
       }
 
     } else if (result === 3) {
@@ -81,7 +81,7 @@ export default class CloseShader extends Shader {
       
       ctx.strokeStyle = convertedCol.darken(5).toString()
 
-      ctx.stroke()
+      this.stroke(ctx)
     }
   }
 }

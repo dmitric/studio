@@ -35,6 +35,7 @@ export default class Studio extends Component {
     this.toggleDebug = this.toggleDebug.bind(this)
     this.toggleFullScreen = this.toggleFullScreen.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
+    this.toggleFill = this.toggleFill.bind(this)
 
     this.onRender = this.onRender.bind(this)
     
@@ -72,7 +73,8 @@ export default class Studio extends Component {
       currentPaletteIndex: this.paletteManager.currentIndex,
       fullScreen: false,
       resolution: this.resolutionManager.current(),
-      contrast: this.contrastManager.current()
+      contrast: this.contrastManager.current(),
+      fill: true
     }
   }
 
@@ -133,6 +135,19 @@ export default class Studio extends Component {
     this.setState(dims)
   }
 
+  toggleFill () {
+    const result = !this.state.fill
+
+    if (this.state.debug) {
+      this.debugToaster.show({
+        message: !result ? 'Fill off' : 'Fill on',
+        iconName: !result ? 'circle' : 'full-circle'
+      })
+    }
+
+    this.setState({fill: result})
+  }
+
   toggleDebug () {
     if (this.state.debug) {
       this.debugToaster.show({ message: "Press ⌘H to toggle menus on", iconName: 'help'})
@@ -176,6 +191,9 @@ export default class Studio extends Component {
     } else if ((ev.metaKey || ev.ctrlKey) && ev.which === 70) {
       ev.preventDefault()
       this.toggleFullScreen()
+    } else if ((ev.metaKey || ev.ctrlKey) && ev.which === 68) {
+      ev.preventDefault()
+      this.toggleFill()
     } else if (ev.which === 32) {
       ev.preventDefault()
       this.framePlayer.toggle()
@@ -224,13 +242,15 @@ export default class Studio extends Component {
           framePlayer={this.framePlayer}
           onRender={this.onRender}
           resolution={this.resolutionManager.current()}
-          contrast={this.contrastManager.current()} />
+          contrast={this.contrastManager.current()}
+          fill={this.state.fill} />
         
         <StudioTools
           debug={this.state.debug}
           fullScreen={this.state.fullScreen}
           toggleFullScreen={this.toggleFullScreen}
           toggleDebug={this.toggleDebug}
+          toggleFill={this.toggleFill}
           framePlayer={this.framePlayer}
           paletteManager={this.paletteManager}
           shaderManager={this.shaderManager}

@@ -19,7 +19,7 @@ export default class StarsAndBarsShader extends Shader {
       ctx.lineTo(0, 0 - r)
     }
 
-    ctx.fill()
+    this.fill(ctx)
     ctx.restore()
   }
 
@@ -34,8 +34,8 @@ export default class StarsAndBarsShader extends Shader {
       ctx.fillStyle = stripeIndex % 2 === 0? "rgb(187, 19, 62)" : "white"
       ctx.strokeStyle = ctx.fillStyle
       
-      ctx.fill()
-      ctx.stroke()
+      this.fill(ctx)
+      this.stroke(ctx)
     }
   }
 
@@ -50,16 +50,16 @@ export default class StarsAndBarsShader extends Shader {
       ctx.fillStyle = "rgb(0, 33, 71)";
       ctx.strokeStyle = ctx.fillStyle;
       
-      ctx.fill()
-      ctx.stroke()
+      this.fill(ctx)
+      this.stroke(ctx)
 
       this.drawStar(ctx, (pixel.x+0.5)*data.blockDimension, (0.5+ pixel.y)*data.blockDimension, data.blockDimension*0.3, 5, 0.4)
       
       ctx.fillStyle = "white"
       ctx.strokeStyle = "white"
       
-      ctx.fill()
-      ctx.stroke()
+      this.fill(ctx)
+      this.stroke(ctx)
     }
   }
 }

@@ -34,10 +34,10 @@ export default class GlitchShader extends Shader {
       ctx.fillStyle = saturatedCol.toString()
       ctx.strokeStyle = ctx.fillStyle
 
-      ctx.fill()
+      this.fill(ctx)
       
-      if (this.canFill) {
-        ctx.stroke()
+      if (this.shouldFill()) {
+        this.stroke(ctx)
       }
 
       let x = 0
@@ -58,10 +58,10 @@ export default class GlitchShader extends Shader {
 
         ctx.fillStyle = fillCol.toString()
         ctx.strokeStyle = ctx.fillStyle
-        ctx.fill()
+        this.fill(ctx)
 
-        if (!this.canFill){
-          ctx.stroke()
+        if (!this.shouldFill()){
+          this.stroke(ctx)
         }
 
         if (x+2*bitsize < data.blockDimension) {
@@ -74,10 +74,10 @@ export default class GlitchShader extends Shader {
           ctx.fillStyle = col1.toString()
           ctx.strokeStyle = ctx.fillStyle
           
-          ctx.fill()
+          this.fill(ctx)
           
-          if (!this.canFill){
-            ctx.stroke()
+          if (!this.shouldFill()){
+            this.stroke(ctx)
           }
         }
 
@@ -92,10 +92,10 @@ export default class GlitchShader extends Shader {
           ctx.fillStyle = col2.toString()
           ctx.strokeStyle = ctx.fillStyle
           
-          ctx.fill()
+          this.fill(ctx)
 
-          if (!this.canFill) {
-            ctx.stroke()
+          if (!this.shouldFill()) {
+            this.stroke(ctx)
           }
         }
       }

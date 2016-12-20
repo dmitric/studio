@@ -5,7 +5,7 @@ import generateImageDataFromImage from './ImageUtils.js'
 export default class Canvas extends Component {
   
   constructor (props) {
-    super(props);
+    super(props)
     this.drawCanvasFromImage = this.drawCanvasFromImage.bind(this)
     this.clearCanvas = this.clearCanvas.bind(this)
     this.loadFrame = this.loadFrame.bind(this)
@@ -34,6 +34,7 @@ export default class Canvas extends Component {
     if (image) {
 
       const startProcess = new Date().getTime()
+      
       const data = generateImageDataFromImage(image, {
         resolution: this.props.resolution,
         maxWidth: this.props.width,
@@ -43,10 +44,13 @@ export default class Canvas extends Component {
         contrast: this.props.contrast,
         useContrast: true
       })
+
       const endProcess = new Date().getTime()
 
       this.props.shader.configure({
-        defaultColor: this.defaultColor
+        defaultColor: this.defaultColor,
+        fill: this.props.fill,
+        blockDimension: data.blockDimension
       })
 
       const startRender = new Date().getTime()

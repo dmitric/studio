@@ -56,14 +56,14 @@ export default class TargetShader extends Shader {
     ctx.fillStyle = mainFill
     ctx.strokeStyle = mainFill
 
-    ctx.fill()
-    ctx.stroke()
+    this.fill(ctx)
+    this.stroke(ctx)
 
-    //if (mainFill === brightColor) {
-    //  if (this.canFill) {
-    //    ctx.stroke()
-    //  }
-    //}
+    if (mainFill === brightColor) {
+      if (this.shouldFill()) {
+        this.stroke(ctx)
+      }
+    }
 
     if (pixel.brightness >= 0.35 && pixel.brightness <= 0.75) {
 
@@ -78,11 +78,11 @@ export default class TargetShader extends Shader {
       ctx.fillStyle = secondaryFill
       ctx.strokeStyle = secondaryFill
 
-      ctx.fill()
+      this.fill(ctx)
       
-      if (!this.canFill) {
+      if (!this.shouldFill()) {
         ctx.strokeStyle = brightColor
-        ctx.stroke()
+        this.stroke(ctx)
       }
 
       radius *= this.getRandomScalingFactor()
@@ -96,11 +96,11 @@ export default class TargetShader extends Shader {
       ctx.fillStyle = mainFill
       ctx.strokeStyle = mainFill
 
-      ctx.fill()
+      this.fill(ctx)
 
-      if (!this.canFill) {
+      if (!this.shouldFill()) {
         ctx.strokeStyle = brightColor
-        ctx.stroke()
+        this.stroke(ctx)
       }
 
 
@@ -117,11 +117,11 @@ export default class TargetShader extends Shader {
         ctx.fillStyle = secondaryFill
         ctx.strokeStyle = secondaryFill
 
-        ctx.fill()
+        this.fill(ctx)
 
-        if (!this.canFill) {
+        if (!this.shouldFill()) {
           ctx.strokeStyle = brightColor
-          ctx.stroke()
+          this.stroke(ctx)
         }
 
         radius *= this.getRandomScalingFactor()
@@ -135,11 +135,11 @@ export default class TargetShader extends Shader {
         ctx.fillStyle = mainFill
         ctx.strokeStyle = mainFill
 
-        ctx.fill()
+        this.fill(ctx)
 
-        if (!this.canFill) {
+        if (!this.shouldFill()) {
           ctx.strokeStyle = brightColor
-          ctx.stroke()
+          this.stroke(ctx)
         }
 
       }

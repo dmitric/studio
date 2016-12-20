@@ -75,7 +75,7 @@ export default class SketchingShader extends Shader {
       })
     })
 
-    if (!this.canFill){
+    if (!this.shouldFill()){
       for (let i = 0; i <= width; i += data.blockDimension) {
         particles.push([i, 0], [i, height])
       }
@@ -105,7 +105,7 @@ export default class SketchingShader extends Shader {
       
       var pix2 = data.pixelGrid[pixX2][pixY2]
 
-      var check = this.canFill ? pix.brightness < 0.7 && pix2.brightness < 0.7 : pix.brightness > 0.7 && pix2.brightness > 0.7
+      var check = this.shouldFill() ? pix.brightness < 0.7 && pix2.brightness < 0.7 : pix.brightness > 0.7 && pix2.brightness > 0.7
       
       if (check) {
         this.drawLink(ctx, l.source[0], l.source[1], l.target[0], l.target[1])
@@ -119,7 +119,7 @@ export default class SketchingShader extends Shader {
       
       var pix = data.pixelGrid[pixX][pixY]
 
-      var checkForDraw = this.canFill ? pix.brightness < 0.7 : pix.brightness > 0.7
+      var checkForDraw = this.shouldFill() ? pix.brightness < 0.7 : pix.brightness > 0.7
       
       if (checkForDraw) {
         this.drawParticle(ctx, data, p[0], p[1])

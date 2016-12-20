@@ -82,8 +82,26 @@ export default class ASCIIShader extends Shader {
     ctx.fillStyle = palette.getColorFromPixel(pixel)
     ctx.strokeStyle = palette.getBorderColorFromPixel(pixel)
     
-    ctx.fillText(character, position.x, position.y)
-    ctx.strokeText(character, position.x, position.y)
+    
+    this.fillText(ctx, character, position.x, position.y)
+    this.strokeText(ctx, character, position.x, position.y)
 
+  }
+
+  fillText (ctx, character, x, y) {
+    if (this.shouldFill()) {
+      ctx.fillText(character, x, y)
+    }
+  }
+
+  strokeText (ctx, character, x, y) {
+    
+    if (!this.shouldFill()) {
+      ctx.lineWidth = Math.max(1.5, Math.floor(this.options.blockDimension/25))
+    } else {
+      ctx.lineWidth = 1
+    }
+
+    ctx.strokeText(character, x, y)
   }
 }

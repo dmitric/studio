@@ -33,7 +33,7 @@ export default class PixelFireShader extends Shader {
     var atBorder = pixel.x - 1 >= 0 ?
       pixel.brightness > 0.3 && data.pixelGrid[pixel.x-1][pixel.y].brightness < 0.3 : false
 
-    if (pixel.brightness < 0.25 && this.canFill) {
+    if (pixel.brightness < 0.25 && this.shouldFill()) {
       ctx.strokeStyle = "white"
     } else if (pixel.brightness < 0.3) {
       ctx.strokeStyle = "#f5f5f5"
@@ -44,10 +44,10 @@ export default class PixelFireShader extends Shader {
     ctx.fillStyle = color
 
     if (pixel.brightness < 0.3) {
-        ctx.fill()
-        //if (!this.canFill){
-          ctx.stroke()
-        //}
+        this.fill(ctx)
+        if (!this.shouldFill()){
+          this.stroke(ctx)
+        }
       }
 
     if (moreThanHalf && atBorder) {
@@ -65,10 +65,10 @@ export default class PixelFireShader extends Shader {
       ctx.fillStyle = "rgba(255, 0,0,0.75)"
       ctx.strokeStyle = "rgba(255, 0,0,0.75)"
       
-      ctx.fill()
+      this.fill(ctx)
       
-      if (!this.canFill){
-        ctx.stroke()
+      if (!this.shouldFill()){
+        this.stroke(ctx)
       }
 
     } else {
@@ -98,10 +98,10 @@ export default class PixelFireShader extends Shader {
             ctx.fillStyle = c
             ctx.strokeStyle = c
             
-            ctx.fill()
+            this.fill(ctx)
 
-            if (!this.canFill){
-              ctx.stroke()
+            if (!this.shouldFill()){
+              this.stroke(ctx)
             }
           }
         }
