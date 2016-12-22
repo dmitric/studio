@@ -24,7 +24,7 @@ export default class SketchingShader extends Shader {
   }
 
   prepare (ctx, data, palette) {
-    ctx.lineWidth = 1
+    ctx.lineWidth = data.blockDimension/12
     
     if (palette.backgroundColor) {
       ctx.fillStyle = palette.backgroundColor
@@ -151,5 +151,11 @@ export default class SketchingShader extends Shader {
     }
 
     this.fillPixelWithColor(ctx, fillColor, fillColor)
+  }
+
+  stroke (ctx) {
+    if (this.shouldStroke()) {
+      ctx.stroke()
+    }
   }
 }

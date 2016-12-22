@@ -102,6 +102,8 @@ export default class ASCIIShader extends Shader {
       ctx.lineWidth = 1
     }
 
-    ctx.strokeText(character, x, y)
+    if (this.shouldStroke()) {
+      ctx.strokeText(character, x, y)
+    }
   }
 }

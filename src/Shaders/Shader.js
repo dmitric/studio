@@ -19,8 +19,16 @@ export default class Shader {
     this.options = options
   }
 
+  reset () {
+    this.options = {}
+  }
+
   shouldFill () {
     return this.options.fill || this.options.fill === undefined
+  }
+
+  shouldStroke () {
+    return this.options.stroke || this.options.stroke === undefined
   }
 
   prepare (ctx, data, palette) {
@@ -62,7 +70,10 @@ export default class Shader {
     } else {
       ctx.lineWidth = 1
     }
-    ctx.stroke()
+    
+    if (this.shouldStroke()) {
+      ctx.stroke()
+    }
   }
 
   renderPixel (ctx, pixel, data, palette) {

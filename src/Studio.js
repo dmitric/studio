@@ -36,6 +36,7 @@ export default class Studio extends Component {
     this.toggleFullScreen = this.toggleFullScreen.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
     this.toggleFill = this.toggleFill.bind(this)
+    this.toggleStroke = this.toggleStroke.bind(this)
 
     this.onRender = this.onRender.bind(this)
     
@@ -63,6 +64,8 @@ export default class Studio extends Component {
     
     this.debugToaster = debugToaster
 
+    this.saver = {}
+
     this.state = {
       debug: true,
       isPlaying: false,
@@ -74,7 +77,8 @@ export default class Studio extends Component {
       fullScreen: false,
       resolution: this.resolutionManager.current(),
       contrast: this.contrastManager.current(),
-      fill: true
+      fill: true,
+      stroke: true
     }
   }
 
@@ -148,6 +152,19 @@ export default class Studio extends Component {
     this.setState({fill: result})
   }
 
+  toggleStroke () {
+    const result = !this.state.stroke
+
+    if (this.state.debug) {
+      this.debugToaster.show({
+        message: !result ? 'Stroke off' : 'Stroke on',
+        iconName: !result ? 'circle' : 'full-circle'
+      })
+    }
+
+    this.setState({stroke: result})
+  }
+
   toggleDebug () {
     if (this.state.debug) {
       this.debugToaster.show({ message: "Press ⌘H to toggle menus on", iconName: 'help'})
@@ -184,16 +201,40 @@ export default class Studio extends Component {
     }
   }
 
+  saveImage () {
+    const canvas = document.getElementsByTagName('canvas')[0]
+    
+    const downloadLink = canvas.toDataURL('image/png')
+    
+    const link = document.createElement('a')
+    
+    link.href = downloadLink
+    link.setAttribute('download', `studio-${this.shaderManager.current().name}-${this.paletteManager.current().name}-${this.framePlayer.currentFrameIndex+1}.png`)
+    link.click()
+
+    if (this.state.debug) {
+      this.debugToaster.show({
+        message: `Image saved`, iconName: 'download'
+      })
+    }
+  }
+
   handleKeydown (ev) {
     if ((ev.metaKey || ev.ctrlKey) && ev.which === 72) {
       ev.preventDefault()
       this.toggleDebug()
+    } else if ((ev.metaKey || ev.ctrlKey) && ev.which === 83) {
+      ev.preventDefault()
+      this.saveImage()
     } else if ((ev.metaKey || ev.ctrlKey) && ev.which === 70) {
       ev.preventDefault()
       this.toggleFullScreen()
     } else if ((ev.metaKey || ev.ctrlKey) && ev.which === 68) {
       ev.preventDefault()
       this.toggleFill()
+    } else if ((ev.metaKey || ev.ctrlKey) && ev.which === 71) {
+      ev.preventDefault()
+      this.toggleStroke()
     } else if (ev.which === 32) {
       ev.preventDefault()
       this.framePlayer.toggle()
@@ -243,7 +284,8 @@ export default class Studio extends Component {
           onRender={this.onRender}
           resolution={this.resolutionManager.current()}
           contrast={this.contrastManager.current()}
-          fill={this.state.fill} />
+          fill={this.state.fill}
+          stroke={this.state.stroke} />
         
         <StudioTools
           debug={this.state.debug}
@@ -251,6 +293,8 @@ export default class Studio extends Component {
           toggleFullScreen={this.toggleFullScreen}
           toggleDebug={this.toggleDebug}
           toggleFill={this.toggleFill}
+          toggleStroke={this.toggleStroke}
+          saveImage={this.saveImage}
           framePlayer={this.framePlayer}
           paletteManager={this.paletteManager}
           shaderManager={this.shaderManager}

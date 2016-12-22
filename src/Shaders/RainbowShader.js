@@ -53,4 +53,11 @@ export default class RainbowShader extends Shader {
       })
     }
   }
+
+  stroke (ctx) {
+    
+    if (this.shouldStroke()) {
+      ctx.stroke()
+    }
+  }
 }

@@ -47,19 +47,25 @@ export default class Canvas extends Component {
 
       const endProcess = new Date().getTime()
 
+      // configure properties of shader
       this.props.shader.configure({
         defaultColor: this.defaultColor,
         fill: this.props.fill,
-        blockDimension: data.blockDimension
+        stroke: this.props.stroke,
+        blockDimension: data.blockDimension,
+        framesPlayed: this.props.framePlayer.framesPlayed
       })
 
       const startRender = new Date().getTime()
       this.props.shader.render(ctx, data, this.props.palette)
       const endRender = new Date().getTime()
 
+      // reset shader properties
+      this.props.shader.reset()
+
       return {
-        renderTime: endRender-startRender,
-        processTime: endProcess-startProcess
+        renderTime: endRender - startRender,
+        processTime: endProcess - startProcess
       }
     
     } else {

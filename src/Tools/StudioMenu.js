@@ -115,7 +115,11 @@ export default class StudioMenu extends Component {
           </MenuItem>
           <MenuItem iconName='full-circle' text='Toggle fill'
             label='⌘D' onClick={this.props.toggleFill} />
+            <MenuItem iconName='minus' text='Toggle stroke'
+            label='⌘G' onClick={this.props.toggleStroke} />
           <MenuDivider title='Debug' />
+          <MenuItem iconName='download' text='Save'
+            label='⌘S' onClick={this.props.saveImage} />
           {fullScreenMenu}
           <MenuItem iconName='control' text='Toggle controls'
             onClick={this.props.toggleDebug} label='⌘H' />
