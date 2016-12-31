@@ -104,9 +104,12 @@ export default class Studio extends Component {
       .on("swipeup", ev => this.paletteManager.moveToNextIndex())
       .on("pinchin", ev => this.resolutionManager.up())
       .on("pinchout", ev => this.resolutionManager.down())
+      .on("press", ev => {
+        this.toggleFill()  
+      })
       .on("tap", ev => {
         if (ev.tapCount === 2) {
-          this.toggleFill()
+          this.framePlayer.toggle()
         }
       })
 
