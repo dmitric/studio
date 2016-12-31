@@ -100,8 +100,8 @@ export default class Studio extends Component {
 
     mc.on("swipeleft", ev => this.shaderManager.moveToNextIndex())
       .on("swiperight", ev => this.shaderManager.moveToPreviousIndex())
-      .on("swipedown", ev => this.paletteManager.moveToPreviousIndex())
-      .on("swipeup", ev => this.paletteManager.moveToNextIndex())
+      .on("swipedown", ev => this.paletteManager.moveToNextIndex())
+      .on("swipeup", ev => this.paletteManager.moveToPreviousIndex())
       .on("pinchin", ev => this.resolutionManager.up())
       .on("pinchout", ev => this.resolutionManager.down())
       .on("press", ev => {
