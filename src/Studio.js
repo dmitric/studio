@@ -95,8 +95,8 @@ export default class Studio extends Component {
 
     const mc = new Hammer(document, { preventDefault: true })
 
-    mc.get('pinch').set({ enable: true });
-    mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+    mc.get('pinch').set({ enable: true })
+    mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL })
 
     mc.on("swipeleft", ev => this.shaderManager.moveToNextIndex())
       .on("swiperight", ev => this.shaderManager.moveToPreviousIndex())
@@ -104,7 +104,11 @@ export default class Studio extends Component {
       .on("swipeup", ev => this.resolutionManager.down())
       .on("pinchin", ev => this.resolutionManager.up())
       .on("pinchout", ev => this.resolutionManager.down())
-      .on("tap", ev => this.toggleFill())
+      .on("tap", ev => {
+        if (ev.tapCount === 2) {
+          this.toggleFill()
+        }
+      })
 
   }
 
