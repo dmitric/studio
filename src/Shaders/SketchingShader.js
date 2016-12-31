@@ -62,11 +62,11 @@ export default class SketchingShader extends Shader {
         const ymax = ymin + data.blockDimension
 
         if (resolution < 7) {
-          addParticle = true;
+          addParticle = true
         } else if (resolution <= 30) {
-          addParticle = Math.random() <= 0.60;
+          addParticle = Math.random() <= 0.60
         } else {
-          addParticle = Math.random() <= 0.40;
+          addParticle = Math.random() <= 0.40
         }
 
         if (addParticle) {

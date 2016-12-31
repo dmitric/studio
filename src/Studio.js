@@ -10,6 +10,8 @@ import FrameSetManager from './Managers/FrameSetManager.js'
 
 import React, { Component } from 'react'
 
+import Hammer from 'hammerjs'
+
 import StudioMenu from './Tools/StudioMenu.js'
 import StudioToolbar from './Tools/StudioToolbar.js'
 
@@ -90,6 +92,20 @@ export default class Studio extends Component {
   componentDidMount () {
     window.addEventListener('keydown', this.handleKeydown, true)
     window.addEventListener("resize", this.updateDimensions, true)
+
+    const mc = new Hammer(document, { preventDefault: true })
+
+    mc.get('pinch').set({ enable: true });
+    mc.get('swipe').set({ direction: Hammer.DIRECTION_ALL });
+
+    mc.on("swipeleft", ev => this.shaderManager.moveToNextIndex())
+      .on("swiperight", ev => this.shaderManager.moveToPreviousIndex())
+      .on("swipedown", ev => this.resolutionManager.up())
+      .on("swipeup", ev => this.resolutionManager.down())
+      .on("pinchin", ev => this.resolutionManager.up())
+      .on("pinchout", ev => this.resolutionManager.down())
+      .on("tap", ev => this.toggleFill())
+
   }
 
   componentWillUnmount () {
