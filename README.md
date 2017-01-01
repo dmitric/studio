@@ -30,17 +30,31 @@ You've probably heard the saying 'An artist is only as good as their tools'. I t
 
 The system can scale images up and down automatically, which can drastically change the look and feel.
 
+You can change the resolution in the menu, using the up and down keys, or by pinching in and out.
+
 ### Contrast
 
 The system can change contrast on the original image, which can drastically alter how something is colored.
 
+You can change the contrast in the menu.
+
 ### Frames
 
-You can add and remove frames to the studio system via a simple interface in the browser.
+Add and remove frames to the studio system via a simple interface in the browser.
+
+You can edit frames by clicking the left most button in the toolbar.
+
+### Fill and Stroke
+
+By default most shaders in the system will 'fill' and 'stroke' the shapes made, but you can also toggle those on and off. With fill toggled off, you'll just have the outline of the shapes. For more complicated shaders, it's also a chance to make an alternative, but complimentary style.
+
+You can toggle fill and stroke individually in the menu, or toggle fill by pressing the screen for around a quarter of a second.
 
 ### Player
 
 You can easily play, pause, and navigate through the frames in studio.
+
+You can start and stop the player with the play or pause button in the toggle bar, by hitting the space key on the keyboard, or by double tapping.
 
 ## How to install and run
 
