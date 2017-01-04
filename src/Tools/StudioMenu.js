@@ -123,6 +123,9 @@ export default class StudioMenu extends Component {
           {fullScreenMenu}
           <MenuItem iconName='control' text='Toggle controls'
             onClick={this.props.toggleDebug} label='⌘H' />
+          <MenuDivider title='Contribute' />
+          <MenuItem iconName='git-repo' target='_blank' href='https://github.com/dmitric/studio' text='View on Github' />
+          <MenuItem iconName='dollar' target='_blank' text='Donate' href='https://cash.me/$dlc' />
         </Menu>
       </div>
     )
