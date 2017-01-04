@@ -67,7 +67,7 @@ export default class StudioMenu extends Component {
 
     return (
       <div className='StudioMenu'>
-        <Menu>
+        <Menu useSmartPositioning={false}>
           <MenuDivider title='Shader' />
           {shadersHtml}
           <MenuDivider title='Palette' />

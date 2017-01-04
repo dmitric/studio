@@ -18,6 +18,7 @@ import ScaledCircleShader from '../Shaders/ScaledCircleShader.js'
 import ScaledTriangleShader from '../Shaders/ScaledTriangleShader.js'
 import SketchingShader from '../Shaders/SketchingShader.js'
 import StarsAndBarsShader from '../Shaders/StarsAndBarsShader.js'
+import StretchDiamondShader from '../Shaders/StretchDiamondShader.js'
 import TargetShader from '../Shaders/TargetShader.js'
 import TriangleShader from '../Shaders/TriangleShader.js'
 
@@ -34,6 +35,7 @@ export default class ShaderManager extends ItemManager {
       new EquilateralTriangleShader(),
       new ASCIIShader(),
       new ScaledCircleShader(),
+      new StretchDiamondShader(),
       new GhostSquareShader(),
       new GlitchShader(),
       new CloseShader(),

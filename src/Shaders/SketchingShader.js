@@ -13,7 +13,7 @@ export default class SketchingShader extends Shader {
   }
 
   drawParticle (ctx, data, x, y) {
-    var dim = data.blockDimension/5
+    const dim = data.blockDimension/5
     ctx.moveTo(x + dim, y);
     ctx.arc(x, y, dim, 0, 2 * Math.PI, false)
   }
@@ -40,10 +40,7 @@ export default class SketchingShader extends Shader {
     }
   }
 
-  render (ctx, data, palette) {
-
-    this.prepare(ctx, data, palette)
-
+  renderPixels (ctx, data, palette) {
     const voro = voronoi()
     const particles = []
     const resolution = Math.min(data.rowCount, data.columnCount)
@@ -88,24 +85,24 @@ export default class SketchingShader extends Shader {
       particles.push([width, height])
     }
 
-    var links = voro.links(particles)
+    const links = voro.links(particles)
 
     ctx.beginPath()
 
     links.forEach(l => {
-      var pixX = Math.min(Math.floor(l.source[0]/data.blockDimension), data.columnCount-1)
+      let pixX = Math.min(Math.floor(l.source[0]/data.blockDimension), data.columnCount-1)
 
-      var pixY = Math.min(Math.floor(l.source[1]/data.blockDimension), data.rowCount-1)
+      let pixY = Math.min(Math.floor(l.source[1]/data.blockDimension), data.rowCount-1)
       
-      var pix = data.pixelGrid[pixX][pixY]
+      let pix = data.pixelGrid[pixX][pixY]
 
-      var pixX2 = Math.min(Math.floor(l.target[0]/data.blockDimension), data.columnCount-1)
+      let pixX2 = Math.min(Math.floor(l.target[0]/data.blockDimension), data.columnCount-1)
 
-      var pixY2 = Math.min(Math.floor(l.target[1]/data.blockDimension), data.rowCount-1)
+      let pixY2 = Math.min(Math.floor(l.target[1]/data.blockDimension), data.rowCount-1)
       
-      var pix2 = data.pixelGrid[pixX2][pixY2]
+      let pix2 = data.pixelGrid[pixX2][pixY2]
 
-      var check = this.shouldFill() ? pix.brightness < 0.7 && pix2.brightness < 0.7 : pix.brightness > 0.7 && pix2.brightness > 0.7
+      let check = this.shouldFill() ? pix.brightness < 0.7 && pix2.brightness < 0.7 : pix.brightness > 0.7 && pix2.brightness > 0.7
       
       if (check) {
         this.drawLink(ctx, l.source[0], l.source[1], l.target[0], l.target[1])
@@ -113,13 +110,13 @@ export default class SketchingShader extends Shader {
     });
 
     particles.forEach(p => {
-      var pixX = Math.min(Math.floor(p[0]/data.blockDimension), data.columnCount - 1)
+      let pixX = Math.min(Math.floor(p[0]/data.blockDimension), data.columnCount - 1)
 
-      var pixY = Math.min(Math.floor(p[1]/data.blockDimension), data.rowCount - 1)
+      let pixY = Math.min(Math.floor(p[1]/data.blockDimension), data.rowCount - 1)
       
-      var pix = data.pixelGrid[pixX][pixY]
+      let pix = data.pixelGrid[pixX][pixY]
 
-      var checkForDraw = this.shouldFill() ? pix.brightness < 0.7 : pix.brightness > 0.7
+      let checkForDraw = this.shouldFill() ? pix.brightness < 0.7 : pix.brightness > 0.7
       
       if (checkForDraw) {
         this.drawParticle(ctx, data, p[0], p[1])

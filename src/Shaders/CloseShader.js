@@ -84,4 +84,10 @@ export default class CloseShader extends Shader {
       this.stroke(ctx)
     }
   }
+
+  stroke (ctx) {
+    if (this.shouldStroke()) {
+      ctx.stroke()
+    }
+  }
 }

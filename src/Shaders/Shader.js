@@ -45,13 +45,17 @@ export default class Shader {
   render (ctx, data, palette) {
     this.prepare(ctx, data, palette)
     
+    this.renderPixels(ctx, data, palette)
+    
+    this.finish(ctx, data, palette)
+  }
+
+  renderPixels (ctx, data, palette) {
     for (let ri=0; ri < data.rowCount; ri ++) {
       for (let ci=0; ci < data.columnCount; ci ++) {
         this.renderPixel(ctx, data.pixelGrid[ci][ri], data, palette)
       }
     }
-    
-    this.finish(ctx, data, palette)
   }
 
   finish (ctx, data, palette) {
