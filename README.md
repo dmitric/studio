@@ -24,7 +24,15 @@ I have provided a simple Palette interface [Palette](src/Palettes/Palette.js) an
 
 ## Tools
 
-You've probably heard the saying 'An artist is only as good as their tools'. I think it's a stupid quote tbh, but I've added some basic tools to help you take advantage of automation instead of manually performing repetitive actions... Isn't that what art is all about anyway?
+You've probably heard the saying 'An artist is only as good as their tools'. I think it's a stupid quote tbh, but I've added some basic tools to help you take advantage of automation instead of manually performing repetitive actions... Isn't that what art is all about anyway? You can toggle the visibility of interface associated with the tools by pressing ctrl + h and still use them via hotkeys or touch controls.
+
+### Switching Shaders
+
+You can switch between shaders using the menu, using the left and right keys, or by swiping left or right.
+
+### Switching Palettes
+
+You can switch between palettes using the menu, holding ctrl and the left and right keys, or by swiping down and up.
 
 ### Resolution
 
@@ -36,7 +44,7 @@ You can change the resolution in the menu, using the up and down keys, or by pin
 
 The system can change contrast on the original image, which can drastically alter how something is colored.
 
-You can change the contrast in the menu.
+You can change the contrast in the menu, or by holding ctrl and the up and down keys.
 
 ### Frames
 
