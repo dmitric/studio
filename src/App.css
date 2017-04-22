@@ -96,3 +96,14 @@ canvas {
   user-select: none;
   min-width: 210px;
 }
+
+@media (max-width: 500px) {
+  .StudioMenu {
+    zoom: 0.5;
+  }
+
+  .StudioToolbar {
+    max-width: 300px;
+    bottom: 5%;
+  }
+}

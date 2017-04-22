@@ -28,6 +28,7 @@ export default class StudioMenu extends Component {
     if (shaders.length) {
       shadersHtml = (
         <MenuItem
+            useSmartPositioning={false}
             iconName='style'
             text={this.props.shaderManager.current().name}>
           <MenuDivider title='More Shaders' />
@@ -45,6 +46,7 @@ export default class StudioMenu extends Component {
     if (palettes.length) {
       palettesHtml = (
         <MenuItem
+            useSmartPositioning={false}
             iconName='tint'
             text={this.props.paletteManager.current().name}>
           <MenuDivider title='More Palettes' />
@@ -59,9 +61,9 @@ export default class StudioMenu extends Component {
       palettesHtml = <MenuItem text="No palettes" />
     }
 
-    const fullScreenMenu = this.props.fullScreen ?  ( <MenuItem iconName='minimize' text='Exit Full Screen'
+    const fullScreenMenu = this.props.fullScreen ?  ( <MenuItem useSmartPositioning={false} iconName='minimize' text='Exit Full Screen'
             onClick={this.props.toggleFullScreen} label='⌘F' /> ) :  (
-                <MenuItem iconName='fullscreen' text='Full Screen'
+                <MenuItem useSmartPositioning={false} iconName='fullscreen' text='Full Screen'
                   onClick={this.props.toggleFullScreen} label='⌘F' />
               )
 
@@ -73,7 +75,7 @@ export default class StudioMenu extends Component {
           <MenuDivider title='Palette' />
           {palettesHtml}
           <MenuDivider title='Playback' />
-          <MenuItem iconName='layout-grid' text='Resolution'>
+          <MenuItem useSmartPositioning={false} iconName='layout-grid' text='Resolution'>
             <MenuItem text='Increase' label='Up' onClick={e => {
                 this.props.resolutionManager.up()
                 if (this.props.debug) {
@@ -93,7 +95,7 @@ export default class StudioMenu extends Component {
               }
             } />
           </MenuItem>
-          <MenuItem iconName='contrast' text='Contrast'>
+          <MenuItem useSmartPositioning={false} iconName='contrast' text='Contrast'>
             <MenuItem text='Increase' label='⌘Up' onClick={e => {
                 this.props.contrastManager.up()
                 if (this.props.debug) {
@@ -115,7 +117,7 @@ export default class StudioMenu extends Component {
           </MenuItem>
           <MenuItem iconName='full-circle' text='Toggle fill'
             label='⌘D' onClick={this.props.toggleFill} />
-            <MenuItem iconName='minus' text='Toggle stroke'
+          <MenuItem iconName='minus' text='Toggle stroke'
             label='⌘G' onClick={this.props.toggleStroke} />
           <MenuDivider title='Debug' />
           <MenuItem iconName='download' text='Save'

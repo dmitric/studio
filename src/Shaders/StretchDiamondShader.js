@@ -1,27 +1,9 @@
-import Shader from './Shader.js'
+import StretchShader from './StretchShader.js'
 
-export default class StretchDiamondShader extends Shader {
+export default class StretchDiamondShader extends StretchShader {
   
   constructor (name) {
     super(name || "Stretch Diamonds")
-  }
-
-  generateRandomNumbers (n, m) {
-    let i = 0
-    let randNums = []
-    let sum = 0
-    
-    for (i = 0; i < n; i++) {
-      randNums[i] = Math.random()
-      sum += randNums[i]
-    }
-
-    for (i = 0; i < n; i++) {
-      randNums[i] /= sum
-      randNums[i] *= m
-    }
-
-    return randNums
   }
 
   renderPixels (ctx, data, palette) {
