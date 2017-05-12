@@ -23,6 +23,9 @@ import StretchDiamondShader from '../Shaders/StretchDiamondShader.js'
 import StretchShader from '../Shaders/StretchShader.js'
 import TargetShader from '../Shaders/TargetShader.js'
 import TriangleShader from '../Shaders/TriangleShader.js'
+import QuadtreeShader from '../Shaders/QuadtreeShader.js'
+import CircleQuadtreeShader from '../Shaders/CircleQuadtreeShader.js'
+import ASCIIQuadtreeShader from '../Shaders/ASCIIQuadtreeShader.js'
 
 /**
 * ShaderManager
@@ -47,7 +50,9 @@ export default class ShaderManager extends ItemManager {
       new DiscShader(),
       new SketchingShader(),
       new StarsAndBarsShader(),
-      new HollowTriangleShader(),
+      new ASCIIQuadtreeShader(),
+      new QuadtreeShader(),
+      new CircleQuadtreeShader(),
       new RainbowShader(),
       new StretchDiamondShader(),
       new PixelFireShader(),

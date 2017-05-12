@@ -11,9 +11,11 @@
     "@blueprintjs/core": "^1.0.1",
     "d3": "^4.4.0",
     "hammerjs": "^2.0.8",
+    "lodash": "^4.17.4",
     "react": "^15.4.0",
     "react-addons-css-transition-group": "^15.4.0",
     "react-dom": "^15.4.0",
+    "react-transition-group": "^1.1.3",
     "tinycolor2": "^1.4.1"
   },
   "scripts": {
