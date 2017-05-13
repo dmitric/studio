@@ -17,12 +17,13 @@ export default class QuadtreeShader extends Shader {
   }
 
   prepare (ctx, data, palette) {
+    super.prepare(ctx, data, palette)
     var canvas = document.createElement('canvas');
     canvas.width = data.blockDimension * data.columnCount * this.horizontalSkip
     canvas.height = data.blockDimension * data.rowCount * this.verticalSkip
     this.prepCtx = canvas.getContext('2d')
     this.quads = []
-    this.leafSize = data.blockDimension/8;
+    this.leafSize = data.blockDimension/8
   }
 
   renderPixel (ctx, pixel, data, palette) {
@@ -64,10 +65,7 @@ export default class QuadtreeShader extends Shader {
     ctx.strokeStyle = quad.fill;
 
     this.fill(ctx)
-    
-    if (!this.shouldFill() && this.shouldStroke()) {
-      this.stroke(ctx)
-    }
+    this.stroke(ctx)
   }
 
   drawQuadShape(ctx, quad) {
@@ -90,9 +88,7 @@ export default class QuadtreeShader extends Shader {
     }
 
     this.quads.forEach(quad => {
-      if (quad.fill !== quad.previousFill){
-        this.renderQuad(ctx, quad)
-      }
+      this.renderQuad(ctx, quad)
     })
 
   }

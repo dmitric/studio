@@ -9,7 +9,6 @@ import EquilateralTriangleShader from '../Shaders/EquilateralTriangleShader.js'
 import GhostSquareShader from '../Shaders/GhostSquareShader.js'
 import GhostTriangleShader from '../Shaders/GhostTriangleShader.js'
 import GlitchShader from '../Shaders/GlitchShader.js'
-import HollowTriangleShader from '../Shaders/HollowTriangleShader.js'
 import PipeShader from '../Shaders/PipeShader.js'
 import PixelFireShader from '../Shaders/PixelFireShader.js'
 import PixelShader from '../Shaders/PixelShader.js'
@@ -26,6 +25,7 @@ import TriangleShader from '../Shaders/TriangleShader.js'
 import QuadtreeShader from '../Shaders/QuadtreeShader.js'
 import CircleQuadtreeShader from '../Shaders/CircleQuadtreeShader.js'
 import ASCIIQuadtreeShader from '../Shaders/ASCIIQuadtreeShader.js'
+import CrossSplitQuadtreeShader from '../Shaders/CrossSplitQuadtreeShader.js'
 
 /**
 * ShaderManager
@@ -38,6 +38,7 @@ export default class ShaderManager extends ItemManager {
       new TriangleShader(),
       new CubeShader(),
       new EquilateralTriangleShader(),
+      new CrossSplitQuadtreeShader(),
       new ASCIIShader(),
       new ScaledCircleShader(),
       new StretchShader(),

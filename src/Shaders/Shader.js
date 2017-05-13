@@ -69,6 +69,7 @@ export default class Shader {
   }
 
   stroke (ctx) {
+    
     if (!this.shouldFill()) {
       ctx.lineWidth = Math.max(2, Math.floor(this.options.blockDimension/25))
     } else {
