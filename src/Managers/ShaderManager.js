@@ -1,8 +1,12 @@
 import ItemManager from './ItemManager.js'
 
+import ASCIIQuadtreeShader from '../Shaders/ASCIIQuadtreeShader.js'
 import ASCIIShader from '../Shaders/ASCIIShader.js'
+import CircleQuadtreeShader from '../Shaders/CircleQuadtreeShader.js'
 import CircleShader from '../Shaders/CircleShader.js'
+import CircleSketchingShader from '../Shaders/CircleSketchingShader.js'
 import CloseShader from '../Shaders/CloseShader.js'
+import CrossSplitQuadtreeShader from '../Shaders/CrossSplitQuadtreeShader.js'
 import CubeShader from '../Shaders/CubeShader.js'
 import DiscShader from '../Shaders/DiscShader.js'
 import EquilateralTriangleShader from '../Shaders/EquilateralTriangleShader.js'
@@ -12,20 +16,15 @@ import GlitchShader from '../Shaders/GlitchShader.js'
 import PipeShader from '../Shaders/PipeShader.js'
 import PixelFireShader from '../Shaders/PixelFireShader.js'
 import PixelShader from '../Shaders/PixelShader.js'
+import QuadtreeShader from '../Shaders/QuadtreeShader.js'
 import RainbowShader from '../Shaders/RainbowShader.js'
 import ScaledCircleShader from '../Shaders/ScaledCircleShader.js'
 import ScaledTriangleShader from '../Shaders/ScaledTriangleShader.js'
 import SketchingShader from '../Shaders/SketchingShader.js'
-import CircleSketchingShader from '../Shaders/CircleSketchingShader.js'
+import SlantShader from '../Shaders/SlantShader.js'
 import StarsAndBarsShader from '../Shaders/StarsAndBarsShader.js'
-import StretchDiamondShader from '../Shaders/StretchDiamondShader.js'
-import StretchShader from '../Shaders/StretchShader.js'
 import TargetShader from '../Shaders/TargetShader.js'
 import TriangleShader from '../Shaders/TriangleShader.js'
-import QuadtreeShader from '../Shaders/QuadtreeShader.js'
-import CircleQuadtreeShader from '../Shaders/CircleQuadtreeShader.js'
-import ASCIIQuadtreeShader from '../Shaders/ASCIIQuadtreeShader.js'
-import CrossSplitQuadtreeShader from '../Shaders/CrossSplitQuadtreeShader.js'
 
 /**
 * ShaderManager
@@ -41,9 +40,9 @@ export default class ShaderManager extends ItemManager {
       new CrossSplitQuadtreeShader(),
       new ASCIIShader(),
       new ScaledCircleShader(),
-      new StretchShader(),
       new GhostSquareShader(),
       new GlitchShader(),
+      new SlantShader(),
       new CircleSketchingShader(),
       new CloseShader(),
       new PipeShader(),
@@ -55,7 +54,6 @@ export default class ShaderManager extends ItemManager {
       new QuadtreeShader(),
       new CircleQuadtreeShader(),
       new RainbowShader(),
-      new StretchDiamondShader(),
       new PixelFireShader(),
       new TargetShader(),
       new GhostTriangleShader()
