@@ -2,6 +2,7 @@ import ItemManager from './ItemManager.js'
 import Palette from '../Palettes/Palette.js'
 import { stepColorPalette } from '../Palettes/RulePalette.js'
 import GreyscalePalette from '../Palettes/GreyscalePalette.js'
+import CoolGreyPalette from '../Palettes/CoolGreyPalette.js'
 
 /**
 * PaletteManager
@@ -35,6 +36,7 @@ export default class PaletteManager extends ItemManager {
       stepColorPalette('RBW',
         ['transparent', 'red', 'white', 'transparent'],
         [0.08, 0.25, 0.65, 100]),
+      new CoolGreyPalette('Cool Grey'),
       stepColorPalette('Black Yellow',
         ['#120501','#72595c','#988084','#daa878','#fece66', '#fdeac0'],
         [0.08, 0.20, 0.25, 0.4, 0.7, 100]),
